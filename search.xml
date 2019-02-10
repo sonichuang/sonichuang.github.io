@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[test]]></title>
+    <title><![CDATA[更新安卓平板固件]]></title>
+    <url>%2FSonicHuang%2F379f2134%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>others</category>
+      </categories>
+      <tags>
+        <tag>android</tag>
+        <tag>ROM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Test]]></title>
     <url>%2FSonicHuang%2Fd87f7e0c%2F</url>
     <content type="text"><![CDATA[SonicHuang’s first blog in Github.The way how to build a blog and write an article.It will be done soon.Have a good day.]]></content>
       <categories>
