@@ -3,20 +3,7 @@
   <entry>
     <title><![CDATA[如何在Typora中插入本地图片]]></title>
     <url>%2FSonicHuang%2F58b77a70%2F</url>
-    <content type="text"><![CDATA[如何在Typora中插入本地图片我现在遇到的问题是：]]></content>
-      <categories>
-        <category>github pages</category>
-      </categories>
-      <tags>
-        <tag>typora</tag>
-        <tag>hexo</tag>
-        <tag>next</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[如何在Typora中插入本地图片]]></title>
-    <url>%2FSonicHuang%2F58b77a70%2F</url>
-    <content type="text"><![CDATA[如何在Typora中插入本地图片我现在遇到的问题是：在用Typora编辑MD时，插入本地图片后，不能在网页上显示。如下：]]></content>
+    <content type="text"><![CDATA[如何在Typora中插入本地图片我现在遇到的问题是：在用Typora编辑MD时，插入本地图片后，不能在网页上显示。如下： 测试Hexo显示本地图片 关于Typora和hexo图片路径的问题 用 Typora 写 Hexo 博客 hexo中完美插入本地图片]]></content>
       <categories>
         <category>github pages</category>
       </categories>
