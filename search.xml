@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[如何在Typora中插入本地图片]]></title>
     <url>%2FSonicHuang%2F58b77a70%2F</url>
-    <content type="text"><![CDATA[如何在Typora中插入本地图片我现在遇到的问题是：在用Typora编辑MD时，插入本地图片后，不能在网页上显示。如下： 测试Hexo显示本地图片 关于Typora和hexo图片路径的问题 用 Typora 写 Hexo 博客 hexo中完美插入本地图片]]></content>
+    <content type="text"><![CDATA[如何在Typora中插入本地图片我现在遇到的问题是：在用Typora编辑MD时，插入本地图片后，不能在网页上显示, 只能看到空白的方框。 测试Hexo显示本地图片 关于Typora和hexo图片路径的问题 用 Typora 写 Hexo 博客 hexo中完美插入本地图片 我的博客是用Hexo搭建，使用next主题，用的windows系统，苹果电脑有个专门的软件叫ipic听说很好用，但是windows却没有。图片不能显示的原因是：本地插入的图片在Typora本地是图片的绝对地址，部署到网站后，还是显示的绝对路径，很明显，系统找不到这个地址，也就不能显示图片了。解决的方法在网上也是很多，比如安装插件，修改配置文件等等，我觉得太复杂，其实最简单的办法只要简单的几步： 1. 在博客根目录下&gt;source下新建一个assets文件夹。 2.在Typora&lt;File&lt;Preference选择如下： a. 第一个拷贝图片到指定文件夹b. 第二个选择步骤1的assets文件夹，意思是拖放到Typora中的图片会自动复制到这个assets文件夹。c. 第三，四指适用于拖入的本地图片和网络图片都会复制到assets文件夹d. 第五，使用相对路径3. 在Typora&lt;Edit&lt;Image Tools&lt;Use Image Root Path在这里选择储存图片的根目录，定位到步骤1的source文件夹，不能定位到放图片的assets文件夹，我之前就把这步弄错了，导致网站上不能显示图片。定位好后会在Typora的MD文件头里面出现如图的语句：]]></content>
       <categories>
         <category>github pages</category>
       </categories>

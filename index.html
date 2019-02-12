@@ -388,13 +388,16 @@
       
         
           
-            <h1 id="如何在Typora中插入本地图片"><a href="#如何在Typora中插入本地图片" class="headerlink" title="如何在Typora中插入本地图片"></a>如何在Typora中插入本地图片</h1><p>我现在遇到的问题是：在用Typora编辑MD时，插入本地图片后，不能在网页上显示。如下：</p>
+            <h1 id="如何在Typora中插入本地图片"><a href="#如何在Typora中插入本地图片" class="headerlink" title="如何在Typora中插入本地图片"></a>如何在Typora中插入本地图片</h1><p>我现在遇到的问题是：在用Typora编辑MD时，插入本地图片后，不能在网页上显示, 只能看到空白的方框。</p>
 <p><img src="/assets/820190210160210-1549966660078.png" alt="例如"></p>
 <p><a href="https://wt4u.top/2018/07/05/Python/%E6%B5%8B%E8%AF%95%E5%9B%BE%E7%89%87/" target="_blank" rel="noopener">测试Hexo显示本地图片</a></p>
 <p><a href="https://blog.csdn.net/weixin_42474261/article/details/84476050" target="_blank" rel="noopener">关于Typora和hexo图片路径的问题</a></p>
 <p><a href="https://zhangnew.com/Typora-Hexo.html" target="_blank" rel="noopener">用 Typora 写 Hexo 博客</a></p>
 <p><a href="http://etrd.org/2017/01/23/hexo%E4%B8%AD%E5%AE%8C%E7%BE%8E%E6%8F%92%E5%85%A5%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/" target="_blank" rel="noopener">hexo中完美插入本地图片</a></p>
-
+<p>我的博客是用Hexo搭建，使用next主题，用的windows系统，苹果电脑有个专门的软件叫ipic听说很好用，但是windows却没有。图片不能显示的原因是：本地插入的图片在Typora本地是图片的绝对地址，部署到网站后，还是显示的绝对路径，很明显，系统找不到这个地址，也就不能显示图片了。解决的方法在网上也是很多，比如安装插件，修改配置文件等等，我觉得太复杂，其实最简单的办法只要简单的几步：</p>
+<h2 id="1-在博客根目录下-gt-source下新建一个assets文件夹。"><a href="#1-在博客根目录下-gt-source下新建一个assets文件夹。" class="headerlink" title="1. 在博客根目录下&gt;source下新建一个assets文件夹。"></a>1. 在博客根目录下&gt;source下新建一个assets文件夹。</h2><p><img src="/assets/9QQ截图20190212191523.png" alt=""></p>
+<h2 id="2-在Typora-lt-File-lt-Preference选择如下："><a href="#2-在Typora-lt-File-lt-Preference选择如下：" class="headerlink" title="2.在Typora&lt;File&lt;Preference选择如下："></a>2.在Typora&lt;File&lt;Preference选择如下：</h2><p><img src="../assets/8QQ截图20190212192953.png" alt="8QQ截图20190212192953"></p>
+<h3 id="a-第一个拷贝图片到指定文件夹"><a href="#a-第一个拷贝图片到指定文件夹" class="headerlink" title="a. 第一个拷贝图片到指定文件夹"></a>a. 第一个拷贝图片到指定文件夹</h3><h3 id="b-第二个选择步骤1的assets文件夹，意思是拖放到Typora中的图片会自动复制到这个assets文件夹。"><a href="#b-第二个选择步骤1的assets文件夹，意思是拖放到Typora中的图片会自动复制到这个assets文件夹。" class="headerlink" title="b. 第二个选择步骤1的assets文件夹，意思是拖放到Typora中的图片会自动复制到这个assets文件夹。"></a>b. 第二个选择步骤1的assets文件夹，意思是拖放到Typora中的图片会自动复制到这个assets文件夹。</h3><h3 id="c-第三，四指适用于拖入的本地图片和网络图片都会复制到assets文件夹"><a href="#c-第三，四指适用于拖入的本地图片和网络图片都会复制到assets文件夹" class="headerlink" title="c. 第三，四指适用于拖入的本地图片和网络图片都会复制到assets文件夹"></a>c. 第三，四指适用于拖入的本地图片和网络图片都会复制到assets文件夹</h3><h3 id="d-第五，使用相对路径"><a href="#d-第五，使用相对路径" class="headerlink" title="d. 第五，使用相对路径"></a>d. 第五，使用相对路径</h3><h2 id="3-在Typora-lt-Edit-lt-Image-Tools-lt-Use-Image-Root-Path"><a href="#3-在Typora-lt-Edit-lt-Image-Tools-lt-Use-Image-Root-Path" class="headerlink" title="3. 在Typora&lt;Edit&lt;Image Tools&lt;Use Image Root Path"></a>3. 在Typora&lt;Edit&lt;Image Tools&lt;Use Image Root Path</h2><h2 id="在这里选择储存图片的根目录，定位到步骤1的source文件夹，不能定位到放图片的assets文件夹，我之前就把这步弄错了，导致网站上不能显示图片。定位好后会在Typora的MD文件头里面出现如图的语句："><a href="#在这里选择储存图片的根目录，定位到步骤1的source文件夹，不能定位到放图片的assets文件夹，我之前就把这步弄错了，导致网站上不能显示图片。定位好后会在Typora的MD文件头里面出现如图的语句：" class="headerlink" title="在这里选择储存图片的根目录，定位到步骤1的source文件夹，不能定位到放图片的assets文件夹，我之前就把这步弄错了，导致网站上不能显示图片。定位好后会在Typora的MD文件头里面出现如图的语句："></a>在这里选择储存图片的根目录，定位到步骤1的source文件夹，不能定位到放图片的assets文件夹，我之前就把这步弄错了，导致网站上不能显示图片。定位好后会在Typora的MD文件头里面出现如图的语句：</h2><h2 id=""><a href="#" class="headerlink" title=""></a><img src="/assets/7QQ截图20190212195026.png" alt="7QQ截图20190212195026"></h2>
           
         
       
