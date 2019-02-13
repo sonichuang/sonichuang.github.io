@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[在Github博客加入评论功能]]></title>
     <url>%2FSonicHuang%2F2be1fd41%2F</url>
-    <content type="text"><![CDATA[E:\python files\IDEL FILES\Myblog\themes\next\source\images E:\python files\IDEL FILES\Myblog\themes\next\source\css_custom]]></content>
+    <content type="text"><![CDATA[一.加入博客背景1. 找到主博客\themes\next\source\css_custom下custom.styl文件，原始文件里面是空白的，用记事本打开然后添加如下文本。 123456789101112131415// Custom styles.@media screen and (min-width:1200px) &#123; body &#123; background-image:url(/images/backgroundpicturename.jpg); background-repeat: no-repeat; background-attachment:fixed; background-position:50% 50%; background-size: cover &#125; #footer a &#123; color:#eee; &#125;&#125; 注意上面url后面括号里面内容。 2.把需要的背景图片放在\themes\next\source\images文件夹里然后把图片名称填入步骤1，url后面backgroundpicturename,注意扩展名例子是jpg, 要根据实际情况修改。3. 部署后就可以看到我们的背景了。我把图片进行了修改，在图片编辑器里面修改他的像素为电脑屏幕的实际像素值。]]></content>
       <categories>
         <category>github pages</category>
       </categories>
