@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[在Github博客加入评论功能]]></title>
+    <url>%2FSonicHuang%2F2be1fd41%2F</url>
+    <content type="text"><![CDATA[E:\python files\IDEL FILES\Myblog\themes\next\source\images E:\python files\IDEL FILES\Myblog\themes\next\source\css_custom]]></content>
+      <categories>
+        <category>github pages</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>next</tag>
+        <tag>github pages</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[如何在Typora中插入本地图片和加入Readmore按钮]]></title>
     <url>%2FSonicHuang%2F58b77a70%2F</url>
     <content type="text"><![CDATA[如何在Typora中插入本地图片和加入Readmore按钮第一部分：插入本地图片我现在遇到的问题是：在用Typora编辑MD时，插入本地图片后，不能在网页上显示, 只能看到空白的方框。 我的博客是用Hexo搭建，使用next主题，用的windows系统，苹果电脑有个专门的软件叫ipic听说很好用，但是windows却没有。图片不能显示的原因是：本地插入的图片在Typora本地是图片的绝对地址，部署到网站后，还是显示的绝对路径，很明显，系统找不到这个地址，也就不能显示图片了。解决的方法在网上也是很多，比如安装插件，修改配置文件等等，我觉得太复杂，其实最简单的办法只要简单的几步: 1. 在博客根目录下&gt;source下新建一个assets文件夹。 2.在Typora&lt;File&lt;Preference选择如下： a. 第一个拷贝图片到指定文件夹b. 第二个选择步骤1的assets文件夹，意思是拖放到Typora中的图片会自动复制到这个assets文件夹。c. 第三，四指适用于拖入的本地图片和网络图片都会复制到assets文件夹d. 第五，使用相对路径3. 在Typora&lt;Edit&lt;Image Tools&lt;Use Image Root Path在这里选择储存图片的根目录，定位到步骤1的source文件夹，不能定位到放图片的assets文件夹，我之前就把这步弄错了，导致网站上不能显示图片。定位好后会在Typora的MD文件头里面出现如图的语句： 4.设置好了后就就可以插入图片了，显示的是图片的相对路径。 5. 部署后就能在网站正确显示了。第二部分：在博客首页加入Readmore按钮有两个办法： 1. 手动添加（推荐），在MD文中的适当位置重启一行纯文本写入如下图这一行，系统就会自动在首页显示之前的内容 2. 自动添加。在主题文件夹的配置文件\themes\next下面_config.yml，中找到如下代码： 实际上官方推荐使用手动加入Readmore按钮。因为自动添加会让文章看起来不人性化, 会出现突然在某个地方咔嚓一下断掉的感觉。另外如果同时设置的手动和自动，会优先在手动的地方显示。 总结：1. 网络上的方法不一定适合自己，所以需要不断试错。2. 不要轻易放弃。3. 本文章解决了Typora编写MD后部署到Github后图片显示不正常的问题以及加入Readmore按钮的方法。本文参考：关于Typora和hexo图片路径的问题]]></content>
@@ -8,9 +21,9 @@
         <category>github pages</category>
       </categories>
       <tags>
-        <tag>typora</tag>
         <tag>hexo</tag>
         <tag>next</tag>
+        <tag>typora</tag>
       </tags>
   </entry>
   <entry>
