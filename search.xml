@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[在Github博客加入博客背景 评论功能以及修改页脚]]></title>
+    <title><![CDATA[在Github博客加入博客背景 评论功能以及修改侧栏]]></title>
     <url>%2FSonicHuang%2F2be1fd41%2F</url>
-    <content type="text"><![CDATA[一.加入博客背景1. 找到主博客\themes\next\source\css_custom下custom.styl文件，原始文件里面是空白的，用记事本打开然后添加如下文本。 123456789101112131415// Custom styles.@media screen and (min-width:1200px) &#123; body &#123; background-image:url(/images/backgroundpicturename.jpg); background-repeat: no-repeat; background-attachment:fixed; background-position:50% 50%; background-size: cover &#125; #footer a &#123; color:#eee; &#125;&#125; 注意上面url后面括号里面内容。 2.把需要的背景图片放在\themes\next\source\images文件夹里然后把图片名称填入步骤1，url后面backgroundpicturename,注意扩展名例子是jpg, 要根据实际情况修改。3. 部署后就可以看到我们的背景了。我把图片进行了修改，在图片编辑器里面修改他的像素为电脑屏幕的实际像素值。 4. 如果感觉背景图片会挡住博客上的字可以调节，图片的透明度。在步骤1的文件中下面加入如下代码，12345//background color and opacity.main-inner &#123; background: #fff; opacity: 0.9;&#125; background后面的值是颜色代码，这里是白色。opacity是指透明度。这里可以根据需要进行调整。 二. 加入评论功能1.网上推荐使用LiveRe, 在其主页申请一个免费帐号，再Install(安装)，city(一般网站)就可以得到一串代码注意data-uid后面引号里面的字符串。 2.再打开主目录下\themes\next的配置文件_config.yml文件找到如下内容，然后在your uid后面填上步骤1的字符串，注意不要引号，并去掉livere uid前面的#。部署好就可以了。 三. 修改侧栏目录的显示在打开某一个文章的时候，侧栏老是在显示（下图一）如果想把隐藏掉。可以这样修改，在主目录下主题的配置文件\themes\next， _config.yml中sidebar display中在post值那里最前面加上#, 再去掉hide前的#, 就可以了（如下图二）]]></content>
+    <content type="text"><![CDATA[一.加入博客背景1. 找到主博客\themes\next\source\css_custom下custom.styl文件，原始文件里面是空白的，用记事本打开然后添加如下文本。 123456789101112131415// Custom styles.@media screen and (min-width:1200px) &#123; body &#123; background-image:url(/images/backgroundpicturename.jpg); background-repeat: no-repeat; background-attachment:fixed; background-position:50% 50%; background-size: cover &#125; #footer a &#123; color:#eee; &#125;&#125; 注意上面url后面括号里面内容。 2.把需要的背景图片放在\themes\next\source\images文件夹里然后把图片名称填入步骤1，url后面backgroundpicturename,注意扩展名例子是jpg, 要根据实际情况修改。3. 部署后就可以看到我们的背景了。我把图片进行了修改，在图片编辑器里面修改他的像素为电脑屏幕的实际像素值。 4. 如果感觉背景图片会挡住博客上的字可以调节，图片的透明度。在步骤1的文件中下面加入如下代码，12345//background color and opacity.main-inner &#123; background: #fff; opacity: 0.9;&#125; background后面的值是颜色代码，这里是白色。opacity是指透明度。这里可以根据需要进行调整。 二. 加入评论功能1.网上推荐使用LiveRe, 在其主页申请一个免费帐号，再Install(安装)，city(一般网站)就可以得到一串代码注意data-uid后面引号里面的字符串。 2.再打开主目录下\themes\next的配置文件_config.yml文件找到如下内容，然后在your uid后面填上步骤1的字符串，注意不要引号，并去掉livere uid前面的#。部署好就可以了。 三. 修改侧栏目录的显示在打开某一个文章的时候，侧栏老是在显示（下图一）如果想把隐藏掉。可以这样修改，在主目录下主题的配置文件\themes\next， _config.yml中sidebar display中在post值那里最前面加上#, 再去掉hide前的#, 就可以了（如下图二） 总结：修改博客背景，添加评论功能，修改侧栏目录的显示方式]]></content>
       <categories>
         <category>github pages</category>
       </categories>
@@ -37,19 +37,6 @@
         <tag>android</tag>
         <tag>ROM</tag>
         <tag>Record</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Test]]></title>
-    <url>%2FSonicHuang%2Fd87f7e0c%2F</url>
-    <content type="text"><![CDATA[SonicHuang’s first blog in Github.The way how to build a blog and write an article.It will be done soon.Have a good day.]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>adb</tag>
-        <tag>sunlogin</tag>
       </tags>
   </entry>
 </search>
