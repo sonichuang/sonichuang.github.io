@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Python中安装编码检测工具chardet]]></title>
     <url>%2FSonicHuang%2Fb9b1e485%2F</url>
-    <content type="text"><![CDATA[1在Github建好博客后开始学习新的一章，爬虫，首先需要安装一个检测网页代码编码的工具chardet. 参考chardet官网 1. pip 安装在cmd输入命令 1pip install chardet 2. 使用detect()模块检测在IDLE 12345&gt;&gt;&gt; import urllib.request as ur&gt;&gt;&gt; respond = ur.urlopen('https://sonichuang.github.io')&gt;&gt;&gt; import chardet&gt;&gt;&gt; chardet.detect(respond.read())&#123;'encoding': 'utf-8', 'confidence': 0.99, 'language': ''&#125; 意思百分之九十九是utf-8, 还可以检测字符串的语言，如：中文，英文等]]></content>
+    <content type="text"><![CDATA[在Github建好博客后开始学习新的一章，爬虫，首先需要安装一个检测网页代码编码的工具chardet. 参考chardet官网 1. pip 安装在cmd输入命令 1pip install chardet 2. 使用detect()模块检测在IDLE 12345&gt;&gt;&gt; import urllib.request as ur&gt;&gt;&gt; respond = ur.urlopen('https://sonichuang.github.io')&gt;&gt;&gt; import chardet&gt;&gt;&gt; chardet.detect(respond.read())&#123;'encoding': 'utf-8', 'confidence': 0.99, 'language': ''&#125; 意思百分之九十九是utf-8, 还可以检测字符串的语言，如：中文，英文等]]></content>
       <categories>
         <category>python</category>
       </categories>
