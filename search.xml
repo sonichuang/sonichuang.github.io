@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[爬虫-访问网站数据并保存在对应文件.md]]></title>
+    <url>%2FSonicHuang%2F183747d7%2F</url>
+    <content type="text"><![CDATA[题目：访问网址读取数据并保存在对应的文本文件里 我的代码：12345678910111213141516171819'''此脚本通过读取urls.txt上的网站的信息，并保存在对应的文本文件里。'''import urllib.request as urimport chardet as chdef main(): with open('urls.txt') as file: urls = file.readlines()#分行读取 n = 0 for url in urls: sources = ur.urlopen(url).read() code = ch.detect(sources)['encoding']#检测网站的编码方式 html = sources.decode(code)#对网站信息进行相应的解码,decode默认的是encoding = 'utf-8'的编码 n += 1 filename = ''.join(['file_', str(n), '.txt'])#生成对应的文件 with open(filename, 'w', encoding = code) as nfile:#再用相应的编码写入对应的文件，encoding默认的编码是utf-8 nfile.write(html)if __name__ == '__main__': main() 老师的代码：123456789101112131415161718192021222324252627282930'''读取网站信息并保存在对应的文件里。老师的方法与我的相似，不同之处，读取网站信息时使用了分割换行符的方法'''import urllib.requestimport chardetdef main(): i = 0 with open("urls.txt", "r") as f: # 读取待访问的网址 # 由于urls.txt每一行一个URL # 所以按换行符'\n'分割 urls = f.read().splitlines() for each_url in urls: response = urllib.request.urlopen(each_url) html = response.read() # 识别网页编码 encode = chardet.detect(html)['encoding'] if encode == 'GB2312': encode = 'GBK' i += 1 filename = "url_%d.txt" % i #老师用了格式化，我用了join的方法 with open(filename, "w", encoding=encode) as each_file: each_file.write(html.decode(encode, "ignore")) #decode的第二个参数。对于有些字符的特殊编码方式，我们可以通过这个方式进行忽略,详细请参考后面链接。if __name__ == "__main__": main() 以下内容参考：Python中解码decode()与编码encode()与错误处理UnicodeDecodeError: ‘gbk’ codec can’t decode byte 0xab 使用python的时候经常会遇到文本的编码与解码问题，其中很常见的一种解码错误如题目所示，下面介绍该错误的解决方法，将‘gbk’换成‘utf-8’也适用。（1）、首先在打开文本的时候，设置其编码格式，如：open(‘1.txt’,encoding=’gbk’)；（2）、若（1）不能解决，可能是文本中出现的一些特殊符号超出了gbk的编码范围，可以选择编码范围更广的‘gb18030’，如：open(‘1.txt’,encoding=’gb18030’)；（3）、若（2）仍不能解决，说明文中出现了连‘gb18030’也无法编码的字符，可以使用‘ignore’属性进行忽略，如：open(‘1.txt’,encoding=’gb18030’，errors=‘ignore’)； （4）、还有一种常见解决方法为open(‘1.txt’).read().decode(‘gb18030’,’ignore’ 总结： 复习了文件的读取与写入 decode 与 encode urllib 与 chardet]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>爬虫</tag>
+        <tag>chardet</tag>
+        <tag>urllib</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[爬虫-编码检测应用.md]]></title>
+    <url>%2FSonicHuang%2Fbd5cd896%2F</url>
+    <content type="text"><![CDATA[上一篇我们安装编码检测工具chardet, 小甲鱼老师有道题要求用户输入任意网址，我们通过脚本判断出该网站使用的编码方式。 题目演示： 下面是我的代码：123456789101112131415161718192021222324252627282930'''本脚本是利用文本编码检测工具chardet检测用户输入的网站所使用的编码。'''import urllib.request as urimport chardet as ch#定义一个函数用于接收网站数据def source(): url = input('Please input the URL you want to detect: ') try:#检测用户输入的网址是否正确 content = ur.urlopen(url).read() except: print('The URL is wrong or it\'s not available.') else: return content#检测网站的编码def detect(): try:#如果用户输入的网址有问题这里就会抛出异常，为了使脚本运行正常，这里进行了处理，并提示用户。 sources = source() result = ch.detect(sources) except: print('You should restart the application again.') else: result = result['encoding'] if result == 'GB2312': result = 'GBK' print('The encoding way is %s.' % result)#如果作为单独脚本运行时if __name__ == '__main__': detect() 参考关于GB2312 和 GBK 总结： 要注意 1__name__ == '__main__': 的使用]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>爬虫</tag>
+        <tag>chardet</tag>
+        <tag>urllib</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Python中安装编码检测工具chardet]]></title>
     <url>%2FSonicHuang%2Fb9b1e485%2F</url>
     <content type="text"><![CDATA[在Github建好博客后开始学习新的一章，爬虫，首先需要安装一个检测网页代码编码的工具chardet. 参考chardet官网 1. pip 安装在cmd输入命令 1pip install chardet 2. 使用detect()模块检测在IDLE 12345&gt;&gt;&gt; import urllib.request as ur&gt;&gt;&gt; respond = ur.urlopen('https://sonichuang.github.io')&gt;&gt;&gt; import chardet&gt;&gt;&gt; chardet.detect(respond.read())&#123;'encoding': 'utf-8', 'confidence': 0.99, 'language': ''&#125; 意思百分之九十九是utf-8, 还可以检测字符串的语言，如：中文，英文等]]></content>
