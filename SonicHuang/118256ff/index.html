@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="python,爬虫,json,urllib,hashlib,">
+  <meta name="keywords" content="python,爬虫,urllib,json,hashlib,">
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="本文通过爬取有道词典，用python代码实现简单的翻译任务。 小甲鱼在教材中也讲了有道词典的爬取方法，但是时隔几年后的今天，有道工程师已经部署了反爬机制，对请求的表单数据进行了加密。如果不知道他们的加密方法，我们就会爬取失败，得到的数据是{‘errorCode’: 50} ， 或者请求非法等错误信息。一开始我也遭遇了同样的问题，通过反复的查资料不断的调试代码，虽然我不懂json, 也最终成功达到了">
-<meta name="keywords" content="python,爬虫,json,urllib,hashlib">
+<meta name="keywords" content="python,爬虫,urllib,json,hashlib">
 <meta property="og:type" content="article">
 <meta property="og:title" content="爬虫-有道词典.md">
 <meta property="og:url" content="https://sonichuang.github.io/SonicHuang/118256ff/index.html">
@@ -94,9 +94,10 @@
 <meta property="og:image" content="https://sonichuang.github.io/assets/6QQ截图20190223194233.png">
 <meta property="og:image" content="https://sonichuang.github.io/assets/5QQ截图20190223195241.png">
 <meta property="og:image" content="https://sonichuang.github.io/assets/4QQ截图20190223195626.png">
+<meta property="og:image" content="https://sonichuang.github.io/assets/3TIM截图20190223211211.png">
 <meta property="og:image" content="https://sonichuang.github.io/assets/2TIM截图20190223220655.png">
 <meta property="og:image" content="https://sonichuang.github.io/assets/1TIM截图20190223224248.png">
-<meta property="og:updated_time" content="2019-02-23T15:41:26.027Z">
+<meta property="og:updated_time" content="2019-02-23T15:52:01.993Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="爬虫-有道词典.md">
 <meta name="twitter:description" content="本文通过爬取有道词典，用python代码实现简单的翻译任务。 小甲鱼在教材中也讲了有道词典的爬取方法，但是时隔几年后的今天，有道工程师已经部署了反爬机制，对请求的表单数据进行了加密。如果不知道他们的加密方法，我们就会爬取失败，得到的数据是{‘errorCode’: 50} ， 或者请求非法等错误信息。一开始我也遭遇了同样的问题，通过反复的查资料不断的调试代码，虽然我不懂json, 也最终成功达到了">
@@ -422,7 +423,7 @@
 <p>请注意标注的四个参数，如果我们另外输入一个需要翻译的词语，会发现其中i, salt, sign, ts的数据是变化的。第二图与第一图比较就可以发现。我们需要知道变化的三个参数的规律，才能返回我们想要的结果。</p>
 <p><img src="/assets/4QQ截图20190223195626.png" alt=""></p>
 <h4 id="5-找到定义这些参数的json文件，"><a href="#5-找到定义这些参数的json文件，" class="headerlink" title="5.找到定义这些参数的json文件，"></a>5.找到定义这些参数的json文件，</h4><p>在Elements下面如图可以看到一个fanyi.min.js的json文件，复制他的地址在浏览器中打开，会发现很乱的文本。再复制所有文本到<a href="https://www.bejson.com/" target="_blank" rel="noopener">Json在线格式化工具</a>,转化一下就比较清晰了。可以把转化后的文本在记事本中打开，查找salt的文本，就会发现相关的定义。</p>
-<p>!b(/assets/3TIM截图20190223211211.png)</p>
+<p><img src="/assets/3TIM截图20190223211211.png" alt=""></p>
 <h4 id="6-如下图，我们就可以找到ts-salt-sign的值。"><a href="#6-如下图，我们就可以找到ts-salt-sign的值。" class="headerlink" title="6.如下图，我们就可以找到ts, salt, sign的值。"></a>6.如下图，我们就可以找到ts, salt, sign的值。</h4><p><img src="/assets/2TIM截图20190223220655.png" alt=""></p>
 <p><img src="/assets/1TIM截图20190223224248.png" alt=""></p>
 <p>我没有学过json以上的方法参考<a href="https://www.jianshu.com/p/71e7d6b147fd" target="_blank" rel="noopener">python3爬虫之有道翻译(上)</a>，如有错误请指正。注意定义salt中最后一个字符串“p09@Bn{h02_BIEe]$P^nG”有可能会变化，根据实际情况而定。</p>
@@ -455,9 +456,9 @@
           
             <a href="/tags/爬虫/" rel="tag"># 爬虫</a>
           
-            <a href="/tags/json/" rel="tag"># json</a>
-          
             <a href="/tags/urllib/" rel="tag"># urllib</a>
+          
+            <a href="/tags/json/" rel="tag"># json</a>
           
             <a href="/tags/hashlib/" rel="tag"># hashlib</a>
           
