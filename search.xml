@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Git操作问题解决方案记录]]></title>
+    <title><![CDATA[Git-Markdown-Typora操作问题解决方案记录]]></title>
     <url>%2FSonicHuang%2F4e074924%2F</url>
     <content type="text"><![CDATA[学习Markdown, Git, Typora第一天开始就出现很多操作上的问题，当时解决了后来又忘记。我想有必要把每次出现的问题记录一下。这篇文章将会持续更新。 从学习Markdown, Git, Typora第一天开始就出现很多操作上的问题，当时解决了后来又忘记。我想有必要把每次出现的问题记录一下。持续更新中。。。。 一. GitGit图解： Workspace：工作区 Index / Stage：暂存区 Repository：仓库区（或本地仓库） Remote：远程仓库 1. diverged123# Your branch and &apos;origin/master&apos; have diverged,# and have 3 and 8 different commits each, respectively.# (use &quot;git pull&quot; to merge the remote branch into yours) 方法是： 12git fetch origingit reset --hard origin/master 还没有搞懂什么意思，结果是删除了工作区新的文件，恢复到到了之前的状态，状态正常。 2.Changes to be committed123456789$ git statusOn branch masterYour branch is up to date with &apos;origin/master&apos;.Changes to be committed: (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage) deleted: EXE文件/EvenRuiDict/EvenRuiDictionaryv1.0DeveloperSonicHuang.exe deleted: EXE文件/downloadcatpicture/CatPicDownloadv1.0DeveloperSonicHuang.exe 情况：这两个文件我改了名字重新提交了，但是提示缓存区有被删除的文件 解决方法：后来明白，本地进行的删除操作也要经过add, commit, push这个程序才能把所有记录和远程上的文件删除 123$ git add EXE文件/EvenRuiDict/EvenRuiDictionaryv1.0DeveloperSonicHuang.exe$ git commit -m &apos;删除EvenRuiDictionaryv1.0DeveloperSonicHuang.exe&apos;$ git push 1234567891011$ git statusOn branch masterYour branch is up to date with &apos;origin/master&apos;.Changes not staged for commit: (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed) (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory) deleted: EXE文件/downloadcatpicture/CatPicDownloadv1.0DeveloperSonicHuang.exeno changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;) 可以看到第一个文件已经被删除了。第二个文件通过同样的方法删除掉。 总结：凡是在本地删除文件都要提交删除操作，才能使所有本地和远程保持一致 二. Markdown(记录Typora不能表达的情况)1. 在段落中插入一小段代码，使用英文输入法反引号(~键)引用例如：Python的print() 2.三. Typora1.查看markdown源代码在typora编辑器左下角可以查看]]></content>
       <tags>
@@ -48,8 +48,8 @@
       <tags>
         <tag>python</tag>
         <tag>爬虫</tag>
-        <tag>urllib</tag>
         <tag>json</tag>
+        <tag>urllib</tag>
         <tag>hashlib</tag>
       </tags>
   </entry>
