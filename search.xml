@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Git操作问题解决方案记录]]></title>
+    <url>%2FSonicHuang%2F4e074924%2F</url>
+    <content type="text"><![CDATA[学习Markdown, Git, Typora第一天开始就出现很多操作上的问题，当时解决了后来又忘记。我想有必要把每次出现的问题记录一下。这篇文章将会持续更新。 从学习Markdown, Git, Typora第一天开始就出现很多操作上的问题，当时解决了后来又忘记。我想有必要把每次出现的问题记录一下。持续更新中。。。。 一. GitGit图解： Workspace：工作区 Index / Stage：暂存区 Repository：仓库区（或本地仓库） Remote：远程仓库 1. diverged123# Your branch and &apos;origin/master&apos; have diverged,# and have 3 and 8 different commits each, respectively.# (use &quot;git pull&quot; to merge the remote branch into yours) 方法是： 12git fetch origingit reset --hard origin/master 还没有搞懂什么意思，结果是删除了工作区新的文件，恢复到到了之前的状态，状态正常。 2.Changes to be committed123456789$ git statusOn branch masterYour branch is up to date with &apos;origin/master&apos;.Changes to be committed: (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage) deleted: EXE文件/EvenRuiDict/EvenRuiDictionaryv1.0DeveloperSonicHuang.exe deleted: EXE文件/downloadcatpicture/CatPicDownloadv1.0DeveloperSonicHuang.exe 情况：这两个文件我改了名字重新提交了，但是提示缓存区有被删除的文件 解决方法：后来明白，本地进行的删除操作也要经过add, commit, push这个程序才能把所有记录和远程上的文件删除 123$ git add EXE文件/EvenRuiDict/EvenRuiDictionaryv1.0DeveloperSonicHuang.exe$ git commit -m &apos;删除EvenRuiDictionaryv1.0DeveloperSonicHuang.exe&apos;$ git push 1234567891011$ git statusOn branch masterYour branch is up to date with &apos;origin/master&apos;.Changes not staged for commit: (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed) (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory) deleted: EXE文件/downloadcatpicture/CatPicDownloadv1.0DeveloperSonicHuang.exeno changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;) 可以看到第一个文件已经被删除了。第二个文件通过同样的方法删除掉。 总结：凡是在本地删除文件都要提交删除操作，才能使所有本地和远程保持一致 二. Markdown(记录Typora不能表达的情况)1. 在段落中插入一小段代码，使用英文输入法反引号(~键)引用例如：Python的print() 2.三. Typora1.查看markdown源代码在typora编辑器左下角可以查看]]></content>
+      <tags>
+        <tag>git</tag>
+        <tag>typora</tag>
+        <tag>markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[爬虫 喵星人图片下载工具]]></title>
+    <url>%2FSonicHuang%2Fb0f08802%2F</url>
+    <content type="text"><![CDATA[爬取喵星人图片下载网站用easygui提供交互界面输入图片尺寸并下载图片到本地。难度不大，代码如下： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465'''本脚本是利用easygui提供的交互程序在placekitten.com下载喵星人图片'''import urllib.request as urimport easygui as egimport os#基础信息，默认尺寸msg = '输入图片尺寸'title = '喵星人图片下载 v1.0 Developer:SonicHuang'length = '400'width = '600'while True: size = eg.multenterbox(msg, title, ['长', '宽'], [length, width]) if size != None and size[0] != '' and size[1] != '': length = size[0] width = size[1] url = ''.join(['http://placekitten.com/g/', length, '/', width]) #处理网络异常和输入错误 try: #int()的参数必须为整数 int(length) int(width) response = ur.urlopen(url) except: #提示异常信息并返回主循环重新输入 eg.msgbox( '出错了！请检查输入的数据(必须为整数)和检查网络是否连接.', title, 'OK') continue else: #直接读取图片，并保存为一个临时图片 catimage = response.read() with open('temp.jpg', 'wb') as f1: f1.write(catimage) #预览临时图片 asksave = eg.buttonbox('预览\n需要保存请点击图片', title, ('保存图片', '重新输入尺寸', '退出'), 'temp.jpg') #删除临时文件再保存图片，如果点击了图片会返回图片名 if asksave == '保存图片' or asksave == 'temp.jpg': os.remove('temp.jpg') savepath = eg.filesavebox('选择需要保存的位置', title = title, default = 'newimage.jpg', filetypes = ['*.jpg']) if savepath == None:#点击取消或者X返回None ask = eg.buttonbox('要继续下载吗?', title, ('继续', '退出')) if ask == '继续': continue else: break else: with open(savepath, 'wb') as f: f.write(catimage) ask = eg.buttonbox('要继续下载吗?', title, ('继续', '退出')) if ask == '继续': continue else: break #如果不喜欢这个图片或者尺寸，删除之前的临时图片，再重新输入尺寸 elif asksave == '重新输入尺寸': os.remove('temp.jpg') continue #退出时也要删除临时文件 else: os.remove('temp.jpg') break elif size == None:#退出 break else:#输入错误时 feedback = eg.buttonbox('输入错误，请重新输入?', title, ('重新输入', '退出')) if feedback == '重新输入': continue else: break pyinstaller打包后：参考用PyInstaller-3.4打包python程序为exe程序 下载一个封面图片 预览图片 总结： 脚本写好了初次运行没有报错只是完成了一半，剩下一半或者更多的是调试，修改。 要坚持写笔记，对于一个普通人来讲很有用，如果你是天才请忽略。 今天又写了一篇文章记录使用Git, Markdown, Typora使用问题和解决方法。真的感觉Git很复杂，要慢慢理解，遇到问题再解决问题，在实践中学习。]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>爬虫</tag>
+        <tag>easygui</tag>
+        <tag>pyinstaller</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[爬虫 利用Easygui和Pyinstaller写一个简单的字典]]></title>
     <url>%2FSonicHuang%2F8f8af010%2F</url>
     <content type="text"><![CDATA[基于上一篇文章《爬虫-有道词典》，我们用Easygui做一个简单的交互界面，用Pyinstaller打包成EXE文件，就可以方便传输和使用了。 1.先单独写一个easgui的脚本然后把字典脚本改成一个模块的形式导入就可以了。修改成模块的 youdao.py文件代码如下： 1234567891011121314151617181920212223242526272829'''本脚本是利用easygui的交互界面和youdao.py模块实现简单的词典功能。基于有道在线词典'''import easygui as egimport youdao as yd#定义相关参数，初始的输入框值为空白msg = '请输入你想查询的单词或句子\n支持英语，中文等'title = 'EvenRui小词典 v1.0 开发者:SonicHuang'words = ''meaning = ''while True: m = eg.multenterbox(msg, title,['请输入：', '意思是：'],[words, meaning]) if m != None and m[0] != '' and m[1] == '': #输入正确的状态是首先m的值不为None,在输入框有值，在'意思是'这一栏是空白. words = m[0]#再赋值给multenterbox的两个参数，使其同时显示单词和他的翻译结果。 meaning = yd.translate(words) m = eg.multenterbox(msg, title,['请输入：', '意思是：'],[words, meaning]) if m == None: #再点击cancel或者X者退出程序 break else: #点击ok 继续查询，参数为空白回到原始状态 words = '' meaning = '' continue else: #输入错误时，错误提示 ask1 = eg.buttonbox('输入错误，请在正确的位置重新输入。', title, ('重新查词', '退出词典')) if ask1 == '重新查词': words = '' meaning = '' continue else: break 2.把两个py文件放在同一个文件夹里，主程序为EvenRui.py, youdao.py为需要导入的模块, 然后CMD进入这个文件夹后，命令行输入pyinstaller -F -w EvenRui.py，具体使用方法参考我之前的文章 用PyInstaller-3.4打包python程序为exe程序。生成EXE文件后可以删除其他多余的文件。 3.双击EXE文件运行一切正常。4.总结： 运用导入模块的方法 运用pyinstaller,easygui]]></content>
@@ -24,8 +48,8 @@
       <tags>
         <tag>python</tag>
         <tag>爬虫</tag>
-        <tag>json</tag>
         <tag>urllib</tag>
+        <tag>json</tag>
         <tag>hashlib</tag>
       </tags>
   </entry>
