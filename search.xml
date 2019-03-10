@@ -4,6 +4,9 @@
     <title><![CDATA[爬虫-proxy]]></title>
     <url>%2FSonicHuang%2F9df1cdd0%2F</url>
     <content type="text"><![CDATA[昨天看了小甲鱼的爬虫这章用代理和添加user agent来爬取网页的视频，对其中的内容不是十分了解，所以专门写了这篇文章来理解其中的方法。 12345678910111213141516171819202122232425262728293031323334353637383940414243'''本代码使用代理ip登录查询ip的网站来验证代理运行是否成功, 以及opener, header的使用'''import urllib.request as urimport chardet#这个网站可以显示当前的ip地址url = 'http://myip.kkcha.com/'agent = 'User-Agent'agentvalue = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36'proxy = &#123;'http':'120.78.174.170:8080'&#125;#前三行定义一个特殊的opener,来使用代理或者其他来方式打开url. 如果没有定义,urlopen就是用默认的方式去打开url.proxy_support = ur.ProxyHandler(proxy)#handler我的理解就是用什么方法来handleopener = ur.build_opener(proxy_support)#opener就是生成一个工具#0 是否安装opener#ur.install_opener(opener) #安装openerresponse = opener.open(url)#如果前一行不安装opener,就用opener来打开url#response = ur.urlopen(url) #如果已经安装opener, 调用urlopen(url)就会自动用安装的opener的方式来处理#1 request参数添加header'''headers = &#123;agent:agentvalue&#125;request = ur.Request(url = url, headers = headers)response = opener.open(request)'''#2 opener添加header'''opener.addheaders = [(agent, agentvalue)]response = opener.open(url)'''#3 request添加header'''request = ur.Request(url)request.add_header(agent, agentvalue)response = opener.open(request)'''content = response.read()#response.read()运行一次后read的指针就在被读取内容的最后，如果再次调用将返回为空.所以这里把他的值赋值给一个变量, 后面直接调用变量code = chardet.detect(content)['encoding']html = content.decode(code)print(html) 测试了一下，因为代理不稳定或者其他原因，有时会返回错误信息，多试一下就会返回包含如下信息的网页信息，可以看到他的ip地址正是我们代理的地址。 总结： 需要理解handler和opener的作用，以及是否安装opener后的处理方法 可以在哪些地方添加header，以及不同的添加方法 调用read方法后的指针问题，避免重复读取后返回空值。]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
       <tags>
         <tag>python</tag>
         <tag>爬虫</tag>
