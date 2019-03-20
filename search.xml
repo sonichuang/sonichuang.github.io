@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[百度百科“网络爬虫”的词条]]></title>
+    <url>%2FSonicHuang%2F73ee126f%2F</url>
+    <content type="text"><![CDATA[第一次接触正则表达式，和BeautifulSoup，第一印象就是复杂，必须要专门抽时间深入学习才行。 今天这个脚本初步应用他们的基本功能，爬取百度百科一个词条里面的其他词条链接。脚本没有采用之前的urllib.request而是直接用了request库来读取网页数据，据说这个更强大。 12345678910111213141516171819import requestsfrom bs4 import BeautifulSoupimport chardetimport reimport urllib.parse as upurl = 'http://baike.baidu.com/view/284853.htm'agent = 'User-Agent'agentvalue = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36'headers = &#123;agent:agentvalue&#125;proxy = &#123;'http':'120.78.174.170:8080'&#125;response = requests.get(url = url, headers = headers, proxies = proxy)code = chardet.detect(response.content)['encoding']#response.content是返回响应的文本数据response.encoding = code #response.encoding可以查询编码方式，也可以通过赋值对响应进行编码html = response.text #response.text返回响应的二进制数据soup = BeautifulSoup(html, 'html.parser')for tag in soup.find_all(href = re.compile('item')): print(tag.text, '--&gt;', ''.join(['http://baike.baidu.com', up.unquote(tag['href'])])) 上面第19行使用url解码把臃肿的连接地址解码成简短的包含有中文的地址，只要浏览器可以识别就没有关系。 把 http://baike.baidu.com/item//item/%E5%BC%80%E6%94%BE%E6%BA%90%E4%BB%A3%E7%A0%81 解码成：http://baike.baidu.com/item/开放源代码 参考： Requests快速上手 python之urlencode()，quote()及unquote()]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>爬虫</tag>
+        <tag>request</tag>
+        <tag>urllib.parse</tag>
+        <tag>re</tag>
+        <tag>BeautifulSoup</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[爬虫-proxy]]></title>
     <url>%2FSonicHuang%2F9df1cdd0%2F</url>
     <content type="text"><![CDATA[昨天看了小甲鱼的爬虫这章用代理和添加user agent来爬取网页的视频，对其中的内容不是十分了解，所以专门写了这篇文章来理解其中的方法。 12345678910111213141516171819202122232425262728293031323334353637383940414243'''本代码使用代理ip登录查询ip的网站来验证代理运行是否成功, 以及opener, header的使用'''import urllib.request as urimport chardet#这个网站可以显示当前的ip地址url = 'http://myip.kkcha.com/'agent = 'User-Agent'agentvalue = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36'proxy = &#123;'http':'120.78.174.170:8080'&#125;#前三行定义一个特殊的opener,来使用代理或者其他来方式打开url. 如果没有定义,urlopen就是用默认的方式去打开url.proxy_support = ur.ProxyHandler(proxy)#handler我的理解就是用什么方法来handleopener = ur.build_opener(proxy_support)#opener就是生成一个工具#0 是否安装opener#ur.install_opener(opener) #安装openerresponse = opener.open(url)#如果前一行不安装opener,就用opener来打开url#response = ur.urlopen(url) #如果已经安装opener, 调用urlopen(url)就会自动用安装的opener的方式来处理#1 request参数添加header'''headers = &#123;agent:agentvalue&#125;request = ur.Request(url = url, headers = headers)response = opener.open(request)'''#2 opener添加header'''opener.addheaders = [(agent, agentvalue)]response = opener.open(url)'''#3 request添加header'''request = ur.Request(url)request.add_header(agent, agentvalue)response = opener.open(request)'''content = response.read()#response.read()运行一次后read的指针就在被读取内容的最后，如果再次调用将返回为空.所以这里把他的值赋值给一个变量, 后面直接调用变量code = chardet.detect(content)['encoding']html = content.decode(code)print(html) 测试了一下，因为代理不稳定或者其他原因，有时会返回错误信息，多试一下就会返回包含如下信息的网页信息，可以看到他的ip地址正是我们代理的地址。 总结： 需要理解handler和opener的作用，以及是否安装opener后的处理方法 可以在哪些地方添加header，以及不同的添加方法 调用read方法后的指针问题，避免重复读取后返回空值。]]></content>
