@@ -10,8 +10,8 @@
       <tags>
         <tag>python</tag>
         <tag>chardet</tag>
-        <tag>requests</tag>
         <tag>BeautifulSoup</tag>
+        <tag>requests</tag>
         <tag>os</tag>
         <tag>time</tag>
         <tag>pickle</tag>
@@ -27,8 +27,8 @@
       <tags>
         <tag>python</tag>
         <tag>chardet</tag>
-        <tag>requests</tag>
         <tag>BeautifulSoup</tag>
+        <tag>requests</tag>
         <tag>os</tag>
         <tag>pickle</tag>
       </tags>
@@ -44,11 +44,11 @@
         <tag>python</tag>
         <tag>爬虫</tag>
         <tag>chardet</tag>
-        <tag>requests</tag>
-        <tag>BeautifulSoup</tag>
-        <tag>pickle</tag>
         <tag>urllib.parse</tag>
         <tag>re</tag>
+        <tag>BeautifulSoup</tag>
+        <tag>requests</tag>
+        <tag>pickle</tag>
         <tag>matplotlib.pyplot</tag>
         <tag>PIL/Image</tag>
         <tag>shutil</tag>
@@ -64,10 +64,10 @@
       <tags>
         <tag>python</tag>
         <tag>爬虫</tag>
-        <tag>BeautifulSoup</tag>
         <tag>request</tag>
         <tag>urllib.parse</tag>
         <tag>re</tag>
+        <tag>BeautifulSoup</tag>
         <tag>yield</tag>
       </tags>
   </entry>
@@ -81,10 +81,10 @@
       <tags>
         <tag>python</tag>
         <tag>爬虫</tag>
-        <tag>BeautifulSoup</tag>
         <tag>request</tag>
         <tag>urllib.parse</tag>
         <tag>re</tag>
+        <tag>BeautifulSoup</tag>
       </tags>
   </entry>
   <entry>
@@ -110,8 +110,8 @@
       </categories>
       <tags>
         <tag>python</tag>
-        <tag>pickle</tag>
         <tag>urllib.parse</tag>
+        <tag>pickle</tag>
         <tag>quote</tag>
         <tag>正则表达式</tag>
         <tag>解析式</tag>
