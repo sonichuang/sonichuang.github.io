@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="python,爬虫,json,urllib,hashlib,">
+  <meta name="keywords" content="python,Django,Deeplearning,Game of Thrones,Ice and Fire,">
 
 
 
@@ -79,29 +79,18 @@
 
 
 
-<meta name="description" content="本文通过爬取有道词典，用python代码实现简单的翻译任务。 小甲鱼在教材中也讲了有道词典的爬取方法，但是时隔几年后的今天，有道工程师已经部署了反爬机制，对请求的表单数据进行了加密。如果不知道他们的加密方法，我们就会爬取失败，得到的数据是{‘errorCode’: 50} ， 或者请求非法等错误信息。一开始我也遭遇了同样的问题，通过反复的查资料不断的调试代码，虽然我不懂json, 也最终成功达到了">
-<meta name="keywords" content="python,爬虫,json,urllib,hashlib">
+<meta name="description" content="从写完几篇爬虫后至今有二十几天没有更新文章了。 这期间我做了三件事：">
+<meta name="keywords" content="python,Django,Deeplearning,Game of Thrones,Ice and Fire">
 <meta property="og:type" content="article">
-<meta property="og:title" content="爬虫-有道词典">
-<meta property="og:url" content="https://sonichuang.github.io/SonicHuang/118256ff/index.html">
+<meta property="og:title" content="近期关于学习Python的思考">
+<meta property="og:url" content="https://sonichuang.github.io/SonicHuang/50144ef0/index.html">
 <meta property="og:site_name" content="SonicHuang&#39;s Blog">
-<meta property="og:description" content="本文通过爬取有道词典，用python代码实现简单的翻译任务。 小甲鱼在教材中也讲了有道词典的爬取方法，但是时隔几年后的今天，有道工程师已经部署了反爬机制，对请求的表单数据进行了加密。如果不知道他们的加密方法，我们就会爬取失败，得到的数据是{‘errorCode’: 50} ， 或者请求非法等错误信息。一开始我也遭遇了同样的问题，通过反复的查资料不断的调试代码，虽然我不懂json, 也最终成功达到了">
+<meta property="og:description" content="从写完几篇爬虫后至今有二十几天没有更新文章了。 这期间我做了三件事：">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://sonichuang.github.io/assets/10QQ截图20190215183513-1550920455744.png">
-<meta property="og:image" content="https://sonichuang.github.io/assets/9QQ截图20190220220417-1550927762949.png">
-<meta property="og:image" content="https://sonichuang.github.io/assets/7QQ截图20190223193951.png">
-<meta property="og:image" content="https://sonichuang.github.io/assets/8QQ截图20190223193740.png">
-<meta property="og:image" content="https://sonichuang.github.io/assets/6QQ截图20190223194233.png">
-<meta property="og:image" content="https://sonichuang.github.io/assets/5QQ截图20190223195241.png">
-<meta property="og:image" content="https://sonichuang.github.io/assets/4QQ截图20190223195626.png">
-<meta property="og:image" content="https://sonichuang.github.io/assets/3TIM截图20190223211211.png">
-<meta property="og:image" content="https://sonichuang.github.io/assets/2TIM截图20190223220655.png">
-<meta property="og:image" content="https://sonichuang.github.io/assets/1TIM截图20190223224248.png">
-<meta property="og:updated_time" content="2019-02-24T13:57:02.092Z">
+<meta property="og:updated_time" content="2019-05-15T13:53:01.305Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="爬虫-有道词典">
-<meta name="twitter:description" content="本文通过爬取有道词典，用python代码实现简单的翻译任务。 小甲鱼在教材中也讲了有道词典的爬取方法，但是时隔几年后的今天，有道工程师已经部署了反爬机制，对请求的表单数据进行了加密。如果不知道他们的加密方法，我们就会爬取失败，得到的数据是{‘errorCode’: 50} ， 或者请求非法等错误信息。一开始我也遭遇了同样的问题，通过反复的查资料不断的调试代码，虽然我不懂json, 也最终成功达到了">
-<meta name="twitter:image" content="https://sonichuang.github.io/assets/10QQ截图20190215183513-1550920455744.png">
+<meta name="twitter:title" content="近期关于学习Python的思考">
+<meta name="twitter:description" content="从写完几篇爬虫后至今有二十几天没有更新文章了。 这期间我做了三件事：">
 
 
 
@@ -131,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://sonichuang.github.io/SonicHuang/118256ff/">
+  <link rel="canonical" href="https://sonichuang.github.io/SonicHuang/50144ef0/">
 
 
 
 
 
-  <title>爬虫-有道词典 | SonicHuang's Blog</title>
+  <title>近期关于学习Python的思考 | SonicHuang's Blog</title>
   
 
 
@@ -306,7 +295,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sonichuang.github.io/SonicHuang/118256ff/">
+    <link itemprop="mainEntityOfPage" href="https://sonichuang.github.io/SonicHuang/50144ef0/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SonicHuang">
@@ -323,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">爬虫-有道词典</h1>
+          <h1 class="post-title" itemprop="name headline">近期关于学习Python的思考</h1>
         
 
         <div class="post-meta">
@@ -335,8 +324,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-23T18:42:39+08:00">
-                2019-02-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-15T18:50:25+08:00">
+                2019-05-15
               </time>
             
 
@@ -395,46 +384,13 @@
       
 
       
-        <p>本文通过爬取有道词典，用python代码实现简单的翻译任务。</p>
-<p>小甲鱼在教材中也讲了有道词典的爬取方法，但是时隔几年后的今天，有道工程师已经部署了反爬机制，对请求的表单数据进行了加密。如果不知道他们的加密方法，我们就会爬取失败，得到的数据是{‘errorCode’: 50} ， 或者请求非法等错误信息。一开始我也遭遇了同样的问题，通过反复的查资料不断的调试代码，虽然我不懂json, 也最终成功达到了我想要的目的。后面我们来看一下是怎么实现的。</p>
-<a id="more"></a>
-<p><img src="/assets/10QQ截图20190215183513-1550920455744.png" alt=""></p>
-<p>我的配置：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Python 3.7.0</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">window 7 简化版</td>
-</tr>
-<tr>
-<td style="text-align:center">ChromeVersion 69.0.3497.81 (Official Build) (32-bit)</td>
-</tr>
-</tbody>
-</table>
-<h4 id="1-Chrome打开有道在线翻译-鼠标右键审查元素–Network–输入hello回车后就可以看到POST请求数据–点开左边的链接"><a href="#1-Chrome打开有道在线翻译-鼠标右键审查元素–Network–输入hello回车后就可以看到POST请求数据–点开左边的链接" class="headerlink" title="1. Chrome打开有道在线翻译, 鼠标右键审查元素–Network–输入hello回车后就可以看到POST请求数据–点开左边的链接"></a>1. Chrome打开<a href="http://fanyi.youdao.com/" target="_blank" rel="noopener">有道在线翻译</a>, 鼠标右键审查元素–Network–输入hello回车后就可以看到POST请求数据–点开左边的链接</h4><p><img src="/assets/9QQ截图20190220220417-1550927762949.png" alt=""></p>
-<h4 id="2-点开链接后在Response我们可以看到有反馈的结果’你好’，返回到Headers就可以看到我们请求的地址Request-URL"><a href="#2-点开链接后在Response我们可以看到有反馈的结果’你好’，返回到Headers就可以看到我们请求的地址Request-URL" class="headerlink" title="2.点开链接后在Response我们可以看到有反馈的结果’你好’，返回到Headers就可以看到我们请求的地址Request URL"></a>2.点开链接后在Response我们可以看到有反馈的结果’你好’，返回到Headers就可以看到我们请求的地址Request URL</h4><p><img src="/assets/7QQ截图20190223193951.png" alt=""></p>
-<p><img src="/assets/8QQ截图20190223193740.png" alt=""></p>
-<h4 id="3-Headers下面图中Request-Headers的Cookie-Referer-User-Agent后面的数据我们需要用到。"><a href="#3-Headers下面图中Request-Headers的Cookie-Referer-User-Agent后面的数据我们需要用到。" class="headerlink" title="3.Headers下面图中Request Headers的Cookie, Referer, User-Agent后面的数据我们需要用到。"></a>3.Headers下面图中Request Headers的Cookie, Referer, User-Agent后面的数据我们需要用到。</h4><p><img src="/assets/6QQ截图20190223194233.png" alt=""></p>
-<h4 id="4-Headers最后面Form-Data就是我们向服务器请求的数据，后面我们需要用python脚本把这些数据发到有道服务器。"><a href="#4-Headers最后面Form-Data就是我们向服务器请求的数据，后面我们需要用python脚本把这些数据发到有道服务器。" class="headerlink" title="4.Headers最后面Form Data就是我们向服务器请求的数据，后面我们需要用python脚本把这些数据发到有道服务器。"></a>4.Headers最后面Form Data就是我们向服务器请求的数据，后面我们需要用python脚本把这些数据发到有道服务器。</h4><p><img src="/assets/5QQ截图20190223195241.png" alt=""></p>
-<p>请注意标注的四个参数，如果我们另外输入一个需要翻译的词语，会发现其中i, salt, sign, ts的数据是变化的。第二图与第一图比较就可以发现。我们需要知道变化的三个参数的规律，才能返回我们想要的结果。</p>
-<p><img src="/assets/4QQ截图20190223195626.png" alt=""></p>
-<h4 id="5-找到定义这些参数的json文件，"><a href="#5-找到定义这些参数的json文件，" class="headerlink" title="5.找到定义这些参数的json文件，"></a>5.找到定义这些参数的json文件，</h4><p>在Elements下面如图可以看到一个fanyi.min.js的json文件，复制他的地址在浏览器中打开，会发现很乱的文本。再复制所有文本到<a href="https://www.bejson.com/" target="_blank" rel="noopener">Json在线格式化工具</a>,转化一下就比较清晰了。可以把转化后的文本在记事本中打开，查找salt的文本，就会发现相关的定义。</p>
-<p><img src="/assets/3TIM截图20190223211211.png" alt=""></p>
-<h4 id="6-如下图，我们就可以找到ts-salt-sign的值。"><a href="#6-如下图，我们就可以找到ts-salt-sign的值。" class="headerlink" title="6.如下图，我们就可以找到ts, salt, sign的值。"></a>6.如下图，我们就可以找到ts, salt, sign的值。</h4><p><img src="/assets/2TIM截图20190223220655.png" alt=""></p>
-<p><img src="/assets/1TIM截图20190223224248.png" alt=""></p>
-<p>我没有学过json以上的方法参考<a href="https://www.jianshu.com/p/71e7d6b147fd" target="_blank" rel="noopener">python3爬虫之有道翻译(上)</a>，如有错误请指正。注意定义salt中最后一个字符串“p09@Bn{h02_BIEe]$P^nG”有可能会变化，根据实际情况而定。</p>
-<h4 id="7-知道表单参数的值后，我们根据小甲鱼的教材就可以编写Python脚本了。"><a href="#7-知道表单参数的值后，我们根据小甲鱼的教材就可以编写Python脚本了。" class="headerlink" title="7.知道表单参数的值后，我们根据小甲鱼的教材就可以编写Python脚本了。"></a>7.知道表单参数的值后，我们根据小甲鱼的教材就可以编写Python脚本了。</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request <span class="keyword">as</span> ur</span><br><span class="line"><span class="keyword">import</span> urllib.parse <span class="keyword">as</span> up</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="comment">#请求的地址：在第2步中的Request URL</span></span><br><span class="line">url = <span class="string">'http://fanyi.youdao.com/translate_o?smartresult=dict&amp;smartresult=rule'</span></span><br><span class="line"><span class="comment">#需要翻译的内容：</span></span><br><span class="line">content = input(<span class="string">'Input what you want to translate:'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#表单数据关键数据ts, salt, sign的计算方法</span></span><br><span class="line">client = <span class="string">'fanyideskweb'</span></span><br><span class="line">ts = int(time.time() * <span class="number">1000</span>) </span><br><span class="line">num = random.randint(<span class="number">1</span>, <span class="number">10</span>)<span class="comment">#从1到10的随机数</span></span><br><span class="line">salt = str(ts) + str(num)</span><br><span class="line">flowerStr = <span class="string">'p09@Bn&#123;h02_BIEe]$P^nG'</span></span><br><span class="line">sign = hashlib.md5((client + content + salt + flowerStr).encode(<span class="string">'utf-8'</span>)).hexdigest()</span><br><span class="line"></span><br><span class="line">data = &#123;&#125;</span><br><span class="line">data[<span class="string">'i'</span>] = content</span><br><span class="line">data[<span class="string">'from'</span>] = <span class="string">'AUTO'</span></span><br><span class="line">data[<span class="string">'to'</span>] = <span class="string">'AUTO'</span></span><br><span class="line">data[<span class="string">'smartresult'</span>] = <span class="string">'dict'</span></span><br><span class="line">data[<span class="string">'client'</span>] = client</span><br><span class="line">data[<span class="string">'salt'</span>] = salt <span class="comment">#salt的值可以是时间戳和随机数数值相加的结果，也可以是对应字符串相加的结果。可以是int,也可以是str</span></span><br><span class="line">data[<span class="string">'sign'</span>] = sign<span class="comment">#sign的值是client(固定值),content(变化值),salt(变化值),固定字符串拼接后的md5值</span></span><br><span class="line">data[<span class="string">'ts'</span>] = ts <span class="comment">#ts的值是一个时间戳，可以是int也可以是str</span></span><br><span class="line">data[<span class="string">'bv'</span>] = <span class="string">'3e6546407cd5c219c8baa670735759b6'</span> <span class="comment">#bv是浏览器和版本信息的md5值</span></span><br><span class="line">data[<span class="string">'doctype'</span>] = <span class="string">'json'</span></span><br><span class="line">data[<span class="string">'version'</span>] = <span class="string">'2.1'</span></span><br><span class="line">data[<span class="string">'keyfrom'</span>] = <span class="string">'fanyi.web'</span></span><br><span class="line">data[<span class="string">'action'</span>] = <span class="string">'FY_BY_CLICKBUTTION'</span></span><br><span class="line">data[<span class="string">'typoResult'</span>] = <span class="string">'false'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#解析表单数据并编码</span></span><br><span class="line">data = up.urlencode(data).encode(<span class="string">'utf-8'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#下面的header数据需要填入,并实例化</span></span><br><span class="line">req = ur.Request(url = url, data = data, method = <span class="string">'POST'</span>)</span><br><span class="line">req.add_header(<span class="string">'User-Agent'</span>, <span class="string">'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 Safari/537.36'</span>)</span><br><span class="line">req.add_header(<span class="string">'Referer'</span>, <span class="string">'http://fanyi.youdao.com/'</span>)</span><br><span class="line">req.add_header(<span class="string">'Cookie'</span>, <span class="string">'OUTFOX_SEARCH_USER_ID=602357771@10.169.0.84'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#请求并接受反馈信息, timeout是以秒单位确定连接的超时时间</span></span><br><span class="line">response = ur.urlopen(req, timeout = <span class="number">5</span>)</span><br><span class="line"><span class="comment">#读取反馈信息并解码</span></span><br><span class="line">html = response.read().decode(<span class="string">'utf-8'</span>)</span><br><span class="line"><span class="comment">#利用json库把json数据转化为python的列表或者字典</span></span><br><span class="line">result = json.loads(html)[<span class="string">'translateResult'</span>][<span class="number">0</span>][<span class="number">0</span>][<span class="string">'tgt'</span>]</span><br><span class="line">print(<span class="string">'The result is ==&gt;&gt; %s.'</span> % result)</span><br></pre></td></tr></table></figure>
-<p>Json和hashlib的用法参考：<a href="https://blog.csdn.net/Jerry_1126/article/details/82555573" target="_blank" rel="noopener">Python中的json库的简单使用</a>  <a href="https://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/0013868328251266d86585fc9514536a638f06b41908d44000" target="_blank" rel="noopener">hashlib简介</a></p>
-<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><ol>
-<li>没有学过json要做爬虫很被动，学爬虫本身就是被动的，昨天读了一片文章《<a href="https://mp.weixin.qq.com/s/K-j-CPYLdhBXe1LHNDJ1ZQ" target="_blank" rel="noopener">爬虫VS反爬虫</a>》，他们之前的内耗摧残着做这些工作的程序猿们，和消耗着网络上绝大多数的流量，浪费！所以我不打算把爬虫作为我今后主攻的方向。</li>
-<li>一个人外部最大的敌人不是困难而是诱惑。面对诱惑，仍然坚守正道，才是高人。</li>
-<li>知识都是相通的。要学好python，得了解很多其他方面的知识。</li>
-<li>通过今天这段代码，了解了json, urllib.parse包，hashlib库</li>
-</ol>
+        <p>从写完几篇爬虫后至今有二十几天没有更新文章了。</p>
+<p>这期间我做了三件事：</p>
+<a id="more"></a> 
+<p>第一件事 从头追了一部剧’Game of Thrones’,买了一套原版原著’Ice and Fire‘，目前看到第一卷160页，感觉比剧更精彩。目前剧更新到第八季第五集，每周一更新，书继续看。</p>
+<p>第二件事 学习Python一年有余，小甲鱼的零基础学习Python的教材基础知识部分已经学完，现在’是时候呼叫超级飞侠了‘，咳咳，跑题了，是时候思考一下今后的学习方向了。首先我想到的是用python去做一个什么项目，通过项目来学习，上网查资料，什么项目适合我呢？什么爬虫，数据分析，我都不感兴趣，感觉做爬虫和数据分析都太被动（可能是自己知识局限，未能深刻理解，请见谅。），需要找一个适合自己长期专研的项目，于是看到网站开发Django, 刚好前一段时间，朋友问我能不能做网站，当时我确实没有学过。所以可以通过学习Django帮助别人开发喜欢的网站，于是我在B站找到了一个<a href="https://space.bilibili.com/252028233?spm_id_from=333.788.b_765f7570696e666f.2" target="_blank" rel="noopener">Django2.0的视频教程</a>, 如果你感兴趣的话可以去学习。另外分享一个下载B站视频的方法，在视频地址bilibili前加一个字母i就可以跳转到下载网站，然后右键另存就可以了。学习了七八课后，突然感觉网站开发不是我心里最想去干的事情。看过篇知乎的一个问答，关于<a href="https://www.zhihu.com/question/26669731" target="_blank" rel="noopener">web开发的前途问题</a>，其中一个叫<a href="https://www.zhihu.com/people/ptteng" target="_blank" rel="noopener">暗灭</a>的回复的内容我比较感兴趣，他文章并不是讲有没有前途，讲的web开发工作内容以及前端后端的分工。回到前面，我并不是觉得web开发没有前途，而是认为ta不适合我，ta更适合励志做程序员的人。</p>
+<p>然后我做了第三个事情，我问了自己一个问题，我为什么要学习python? 回答是：为了主动与未来的世界保持沟通。说人话就是：几十年后，还有我说话的份，与年轻一代减少代沟。我指的不是那些‘不听老人言，吃亏在眼前’的‘人生哲理’，而是能够理解，使用和传授新知识，新技术。即使做不到授业解惑，也要能够自信的说未来不光是属于你们，还属于我。那么未来是什么样的呢？我需要学习什么呢？Python能够完成未来的什么任务呢？想必大家都能够猜到了，深度学习以及人工智能AI. WAF? 现在人人都在说AI，不说AI就不是社会人是吧？你也要来凑这个热闹吗？就像Jaime最后跟Cersei说的‘Nothing else matters, Only us’，其他什么都不重要了，只有我们俩。我们俩同生死。对于我来说，不管外面怎么吵怎么闹，我选好我的方向，只要与ta同在就行了。我能够像想对于一个数学和逻辑思维都不太好的奔四的人来说（好像这些都是对我极大不利的条件）有多困难了，或许是吧？但或许不是，我不求依靠这些知识来养活我自己，只求能够武装我自己。引用Tyrion跟Jon说的一句话’Never forget what you are, for surely the world will not. Make it your strength. Then it can never be your weakness. Armor yourself in it, and it will never be used to hurt you’. 别忘记自己谁，用自己的弱点武装自己，就没有人能够打败你。我觉得自己是一个富有正能量的人。。。我曾经一个美国的网友，她本人就是做Deeplearning的，我抱怨我的数学不好，她说不是我数学不好，而是not be well taught, 我没有遇到一个会教我数学的老师。这一点也是十分重要的，要不是初中二年级时英语老师对我的影响，我不会选择英语作为母语外的第二语言。（他的诙谐幽默让我喜欢上了英语这门课。）现在要找一个合适的老师或者一本书，真的不容易啊，刚好在网店上看到一本叫‘深度学习入门 -基于python的理论与实现’的书，是一个日本作者写的，看评论说日本人比较细心，像一位老者慢慢道来的感觉，适合初学者。入手后已经学习了一小部分，的确如评论所说，讲的比较有耐心，该重复说的知识点会重复提到，而且翻译也很到位啊，有作者本人在论述的感觉，知识都讲的浅显易懂。</p>
+<p>上面就是我最近所思考的问题，所做的的事情。在此分享。</p>
 
       
     </div>
@@ -454,13 +410,13 @@
           
             <a href="/tags/python/" rel="tag"># python</a>
           
-            <a href="/tags/爬虫/" rel="tag"># 爬虫</a>
+            <a href="/tags/Django/" rel="tag"># Django</a>
           
-            <a href="/tags/json/" rel="tag"># json</a>
+            <a href="/tags/Deeplearning/" rel="tag"># Deeplearning</a>
           
-            <a href="/tags/urllib/" rel="tag"># urllib</a>
+            <a href="/tags/Game-of-Thrones/" rel="tag"># Game of Thrones</a>
           
-            <a href="/tags/hashlib/" rel="tag"># hashlib</a>
+            <a href="/tags/Ice-and-Fire/" rel="tag"># Ice and Fire</a>
           
         </div>
       
@@ -473,8 +429,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/SonicHuang/183747d7/" rel="next" title="爬虫-访问网站数据并保存在对应文件">
-                <i class="fa fa-chevron-left"></i> 爬虫-访问网站数据并保存在对应文件
+              <a href="/SonicHuang/f5189117/" rel="next" title="爬虫-精品聚合网下载图片">
+                <i class="fa fa-chevron-left"></i> 爬虫-精品聚合网下载图片
               </a>
             
           </div>
@@ -482,10 +438,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/SonicHuang/8f8af010/" rel="prev" title="爬虫 利用Easygui和Pyinstaller写一个简单的字典">
-                爬虫 利用Easygui和Pyinstaller写一个简单的字典 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -542,17 +494,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -612,22 +555,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Chrome打开有道在线翻译-鼠标右键审查元素–Network–输入hello回车后就可以看到POST请求数据–点开左边的链接"><span class="nav-number">1.</span> <span class="nav-text">1. Chrome打开有道在线翻译, 鼠标右键审查元素–Network–输入hello回车后就可以看到POST请求数据–点开左边的链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-点开链接后在Response我们可以看到有反馈的结果’你好’，返回到Headers就可以看到我们请求的地址Request-URL"><span class="nav-number">2.</span> <span class="nav-text">2.点开链接后在Response我们可以看到有反馈的结果’你好’，返回到Headers就可以看到我们请求的地址Request URL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Headers下面图中Request-Headers的Cookie-Referer-User-Agent后面的数据我们需要用到。"><span class="nav-number">3.</span> <span class="nav-text">3.Headers下面图中Request Headers的Cookie, Referer, User-Agent后面的数据我们需要用到。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Headers最后面Form-Data就是我们向服务器请求的数据，后面我们需要用python脚本把这些数据发到有道服务器。"><span class="nav-number">4.</span> <span class="nav-text">4.Headers最后面Form Data就是我们向服务器请求的数据，后面我们需要用python脚本把这些数据发到有道服务器。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-找到定义这些参数的json文件，"><span class="nav-number">5.</span> <span class="nav-text">5.找到定义这些参数的json文件，</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-如下图，我们就可以找到ts-salt-sign的值。"><span class="nav-number">6.</span> <span class="nav-text">6.如下图，我们就可以找到ts, salt, sign的值。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-知道表单参数的值后，我们根据小甲鱼的教材就可以编写Python脚本了。"><span class="nav-number">7.</span> <span class="nav-text">7.知道表单参数的值后，我们根据小甲鱼的教材就可以编写Python脚本了。</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#总结："><span class="nav-number"></span> <span class="nav-text">总结：</span></a></li></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
