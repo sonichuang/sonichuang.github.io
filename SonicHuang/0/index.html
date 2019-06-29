@@ -91,7 +91,7 @@
 <meta property="og:image" content="https://sonichuang.github.io/assets/2.png">
 <meta property="og:image" content="https://sonichuang.github.io/assets/3.png">
 <meta property="og:image" content="https://sonichuang.github.io/assets/4.png">
-<meta property="og:updated_time" content="2019-06-20T14:18:55.816Z">
+<meta property="og:updated_time" content="2019-06-24T13:02:20.409Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Deeplearning 笔记：Numpy dot,cumsum,花式索引,布尔屏蔽等">
 <meta name="twitter:description" content="1. os.abspath(__file__)表示当前所在py文件的绝对路径，注意这个函数不能单独在命令行运行必须要在py文件里面。os.path.dirname()表示其所在的文件夹">
@@ -482,6 +482,8 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(a[mask], b[mask], <span class="string">'go'</span>)</span><br><span class="line">Warning (<span class="keyword">from</span> warnings module):</span><br><span class="line">  File <span class="string">"__main__"</span>, line <span class="number">1</span></span><br><span class="line">FutureWarning: Using a non-tuple sequence <span class="keyword">for</span> multidimensional indexing <span class="keyword">is</span> deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted <span class="keyword">as</span> an array index, `arr[np.array(seq)]`, which will result either <span class="keyword">in</span> an error <span class="keyword">or</span> a different result.</span><br><span class="line">[&lt;matplotlib.lines.Line2D object at <span class="number">0x0C78ADF0</span>&gt;]</span><br></pre></td></tr></table></figure>
 <p>根据提示可以改为：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(a[tuple(mask)], b[tuple(mask)], <span class="string">'go'</span>)</span><br><span class="line">[&lt;matplotlib.lines.Line2D object at <span class="number">0x0C6391B0</span>&gt;]</span><br></pre></td></tr></table></figure>
+<p>最后补充一点：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a</span><br><span class="line">array([[0, 1],</span><br><span class="line">       [2, 3],</span><br><span class="line">       [4, 5],</span><br><span class="line">       [6, 7],</span><br><span class="line">       [8, 9]])</span><br><span class="line">&gt;&gt;&gt; b = (a&gt;3)</span><br><span class="line">&gt;&gt;&gt; b</span><br><span class="line">array([[False, False],</span><br><span class="line">       [False, False],</span><br><span class="line">       [ True,  True],</span><br><span class="line">       [ True,  True],</span><br><span class="line">       [ True,  True]])</span><br><span class="line">&gt;&gt;&gt; a[b]</span><br><span class="line">array([4, 5, 6, 7, 8, 9])</span><br><span class="line">&gt;&gt;&gt; a[a&gt;3] #这样也等同于用一个布尔数组做参数的方法</span><br><span class="line">array([4, 5, 6, 7, 8, 9])</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -518,8 +520,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/SonicHuang/50144ef0/" rel="next" title="近期关于学习Python的思考">
-                <i class="fa fa-chevron-left"></i> 近期关于学习Python的思考
+              <a href="/SonicHuang/e9456ec/" rel="next" title="我的网络电台">
+                <i class="fa fa-chevron-left"></i> 我的网络电台
               </a>
             
           </div>
@@ -612,7 +614,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -634,7 +636,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
