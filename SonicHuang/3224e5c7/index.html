@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="google-site-verification" content="5B_IdLvizZgQp2WvljgTuEYP2FRoiU38BWFuNV5BXtg"><meta name="baidu-site-verification" content="iNzn9OcMId"><meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python,deeplearning,MNIST,numpy,deep learning from scratch,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="2.Numpy2.17 dtype, astype">
+<meta name="keywords" content="python,deeplearning,MNIST,numpy,deep learning from scratch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deeplearning 笔记：MNIST数据集初体验">
+<meta property="og:url" content="https://sonichuang.github.io/SonicHuang/3224e5c7/index.html">
+<meta property="og:site_name" content="SonicHuang&#39;s Blog">
+<meta property="og:description" content="2.Numpy2.17 dtype, astype">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-07-09T14:19:45.761Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Deeplearning 笔记：MNIST数据集初体验">
+<meta name="twitter:description" content="2.Numpy2.17 dtype, astype">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://sonichuang.github.io/SonicHuang/3224e5c7/">
+
+
+
+
+
+  <title>Deeplearning 笔记：MNIST数据集初体验 | SonicHuang's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SonicHuang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">The way of programming in Python</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sonichuang.github.io/SonicHuang/3224e5c7/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SonicHuang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SonicHuang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Deeplearning 笔记：MNIST数据集初体验</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-29T17:17:07+08:00">
+                2019-06-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="2-Numpy"><a href="#2-Numpy" class="headerlink" title="2.Numpy"></a>2.Numpy</h3><h4 id="2-17-dtype-astype"><a href="#2-17-dtype-astype" class="headerlink" title="2.17 dtype, astype"></a>2.17 dtype, astype</h4><a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = np.array([<span class="number">-1</span>, <span class="number">1</span>])	     </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = np.array([<span class="number">-2</span>, <span class="number">2</span>])	     </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.dtype  <span class="comment">#dtype查看数据类型</span></span><br><span class="line">dtype(<span class="string">'int32'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.dtype</span><br><span class="line">dtype(<span class="string">'int32'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.astype(np.int16)  <span class="comment">#astype转换数据类型 参数np.int16与直接'int16'一样的结果  </span></span><br><span class="line">array([<span class="number">-1</span>,  <span class="number">1</span>], dtype=int16)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.astype(<span class="string">'int16'</span>)	<span class="comment">#astype当参数为signed符号整数时,转换结果没有发生变化</span></span><br><span class="line">array([<span class="number">-1</span>,  <span class="number">1</span>], dtype=int16) </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.astype(<span class="string">'int16'</span>)	     </span><br><span class="line">array([<span class="number">-2</span>,  <span class="number">2</span>], dtype=int16) </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.astype(<span class="string">'int8'</span>)	     </span><br><span class="line">array([<span class="number">-1</span>,  <span class="number">1</span>], dtype=int8)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.astype(<span class="string">'int8'</span>)	     </span><br><span class="line">array([<span class="number">-2</span>,  <span class="number">2</span>], dtype=int8)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.astype(<span class="string">'uint8'</span>) <span class="comment">#astype当参数为unsigned无符号整数时，-1则为对应数据类型uint8所表示的最大值255，-2则对应的减去1    </span></span><br><span class="line">array([<span class="number">255</span>,   <span class="number">1</span>], dtype=uint8)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.astype(<span class="string">'uint8'</span>)	     </span><br><span class="line">array([<span class="number">254</span>,   <span class="number">2</span>], dtype=uint8)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a	<span class="comment">#astype数据类型转换并不会改变原始数据的值，除非再次赋值给同一个变量如：a = a.astype('int8')</span></span><br><span class="line">array([<span class="number">-1</span>,  <span class="number">1</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b	     </span><br><span class="line">array([<span class="number">-2</span>,  <span class="number">2</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.dtype	     </span><br><span class="line">dtype(<span class="string">'int32'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.dtype	     </span><br><span class="line">dtype(<span class="string">'int32'</span>)</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = np.array([<span class="number">-1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])	     </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = np.array([<span class="number">-2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>])	     </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.shape	     </span><br><span class="line">(<span class="number">4</span>,)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.shape	     </span><br><span class="line">(<span class="number">4</span>,)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.dtype	     </span><br><span class="line">dtype(<span class="string">'int32'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.dtype	     </span><br><span class="line">dtype(<span class="string">'int32'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.dtype = <span class="string">'int16'</span> <span class="comment"># 对dtype进行定义则改变原来的数据类型，用新的数据类型来表示（其改变原理还没有搞清楚）     </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.shape	  <span class="comment">#int32是4个字节的宽度，int16是2个字节的宽度，所以从原来的4个元素变成8个元素 </span></span><br><span class="line">(<span class="number">8</span>,)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a	     </span><br><span class="line">array([<span class="number">-1</span>, <span class="number">-1</span>,  <span class="number">1</span>,  <span class="number">0</span>,  <span class="number">2</span>,  <span class="number">0</span>,  <span class="number">3</span>,  <span class="number">0</span>], dtype=int16) <span class="comment">#为什么会变成这些元素目前还没有搞清楚</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = np.array([<span class="number">-1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])	     </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.dtype = <span class="string">'int64'</span> <span class="comment">#64位是8个字节，相应的元素从32位的4个元素变成2个元素	     </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.shape	     </span><br><span class="line">(<span class="number">2</span>,)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a	     </span><br><span class="line">array([ <span class="number">8589934591</span>, <span class="number">12884901890</span>], dtype=int64) <span class="comment">#为什么会变成这些元素目前还没有搞清楚</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = np.array([<span class="number">-2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>])	 <span class="comment">#dtype下面为什么用不同的数据类型符号整数和无符号整数结果是一样？目前还不清楚，估计跟数字大小有关系</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.dtype = <span class="string">'int64'</span>	     </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b	     </span><br><span class="line">array([<span class="number">21474836478</span>, <span class="number">25769803781</span>], dtype=int64)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = np.array([<span class="number">-2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>])	     </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.dtype = <span class="string">'uint64'</span>	<span class="comment">#跟int64是相同的数组</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b	     </span><br><span class="line">array([<span class="number">21474836478</span>, <span class="number">25769803781</span>], dtype=uint64)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = np.array([<span class="number">-1</span>, <span class="number">1</span>])	     </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.dtype = <span class="string">'int16'</span>	     </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a	     </span><br><span class="line">array([<span class="number">-1</span>, <span class="number">-1</span>,  <span class="number">1</span>,  <span class="number">0</span>], dtype=int16) <span class="comment">#与uint16是不同的数组，实际上等于转换成uint16的值</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = np.array([<span class="number">-1</span>, <span class="number">1</span>])	     </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.dtype = <span class="string">'uint16'</span>	     </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a	     </span><br><span class="line">array([<span class="number">65535</span>, <span class="number">65535</span>,     <span class="number">1</span>,     <span class="number">0</span>], dtype=uint16)</span><br></pre></td></tr></table></figure>
+<p>另外如果从浮点数用astype转换成整数或者无符号整数如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = np.array([<span class="number">-1.23</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.dtype</span><br><span class="line">dtype(<span class="string">'float64'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.astype(<span class="string">'int64'</span>) <span class="comment">#去掉了小数部分</span></span><br><span class="line">array([<span class="number">-1</span>], dtype=int64)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.astype(<span class="string">'uint64'</span>) <span class="comment">#同上面一样-1转换为对应uint64表示的最大值</span></span><br><span class="line">array([<span class="number">18446744073709551615</span>], dtype=uint64)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.astype(<span class="string">'int32'</span>) <span class="comment">#符号整数可以为负，所以没有变化</span></span><br><span class="line">array([<span class="number">-1</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.astype(<span class="string">'uint32'</span>) <span class="comment">#同理2的（32-1）次方</span></span><br><span class="line">array([<span class="number">4294967295</span>], dtype=uint32)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.astype(np.uint32) </span><br><span class="line">array([<span class="number">4294967295</span>], dtype=uint32)</span><br></pre></td></tr></table></figure>
+<h3 id="3-enumerate-Python的内置函数用于将一个可遍历的数据对象-如列表、元组或字符串-组合为一个索引序列，同时列出数据和数据下标，一般用在-for-循环当中。"><a href="#3-enumerate-Python的内置函数用于将一个可遍历的数据对象-如列表、元组或字符串-组合为一个索引序列，同时列出数据和数据下标，一般用在-for-循环当中。" class="headerlink" title="3. enumerate(), Python的内置函数用于将一个可遍历的数据对象(如列表、元组或字符串)组合为一个索引序列，同时列出数据和数据下标，一般用在 for 循环当中。"></a>3. <code>enumerate()</code>, Python的内置函数用于将一个可遍历的数据对象(如列表、元组或字符串)组合为一个索引序列，同时列出数据和数据下标，一般用在 for 循环当中。</h3><p><code>enumerate(sequence, [start=0])</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>list1 = [<span class="string">"这"</span>, <span class="string">"是"</span>, <span class="string">"一个"</span>, <span class="string">"测试"</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> index, item <span class="keyword">in</span> enumerate(list1, <span class="number">1</span>):</span><br><span class="line">	print(index, item)</span><br><span class="line">    </span><br><span class="line"><span class="number">1</span> 这</span><br><span class="line"><span class="number">2</span> 是</span><br><span class="line"><span class="number">3</span> 一个</span><br><span class="line"><span class="number">4</span> 测试</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> index, item <span class="keyword">in</span> enumerate(list1):</span><br><span class="line">	print(index, item)</span><br><span class="line">	</span><br><span class="line"><span class="number">0</span> 这</span><br><span class="line"><span class="number">1</span> 是</span><br><span class="line"><span class="number">2</span> 一个</span><br><span class="line"><span class="number">3</span> 测试</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> index, item <span class="keyword">in</span> enumerate(list1, <span class="number">-1</span>):</span><br><span class="line">	print(index, item)</span><br><span class="line">	</span><br><span class="line"><span class="number">-1</span> 这</span><br><span class="line"><span class="number">0</span> 是</span><br><span class="line"><span class="number">1</span> 一个</span><br><span class="line"><span class="number">2</span> 测试</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>enumerate用于统计文件行数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># method 1</span></span><br><span class="line">count = len(open(filepath, <span class="string">'r'</span>).readlines())</span><br><span class="line"><span class="comment"># method 2</span></span><br><span class="line">count = <span class="number">-1</span></span><br><span class="line"><span class="keyword">for</span> index, line <span class="keyword">in</span> enumerate(open(filepath, <span class="string">'r'</span>)):</span><br><span class="line">    count += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-Deep-Learning-From-Scratch"><a href="#4-Deep-Learning-From-Scratch" class="headerlink" title="4. Deep Learning From Scratch"></a>4. Deep Learning From Scratch</h3><h4 id="4-1-Mnist数据集初体验"><a href="#4-1-Mnist数据集初体验" class="headerlink" title="4.1 Mnist数据集初体验"></a>4.1 Mnist数据集初体验</h4><p>经过一段时间的Numpy的学习，上一周又回到书本上，把之前学过的数据集的内容又看了一遍。第一遍的时候，不知所云，主要是因为Numpy知识的缺乏，第二遍后，终于理解了书中代码的内容。下面是书中源码的备注和自己的理解。</p>
+<p>第一个源码：mnist.py 目的是下载训练和测试数据，并转化为数组，然后保存在本地pickle文件里面</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">except</span> ImportError:</span><br><span class="line">    <span class="keyword">raise</span> ImportError(<span class="string">'You should use Python 3.x'</span>)</span><br><span class="line"><span class="keyword">import</span> os.path</span><br><span class="line"><span class="keyword">import</span> gzip</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment">#数据下载地址</span></span><br><span class="line">url_base = <span class="string">'http://yann.lecun.com/exdb/mnist/'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#对应的文件类型和其被压缩后的文件名组成的字典，包含训练图像，训练标签，测试图像，测试标签</span></span><br><span class="line">key_file = &#123;</span><br><span class="line">    <span class="string">'train_img'</span>:<span class="string">'train-images-idx3-ubyte.gz'</span>,</span><br><span class="line">    <span class="string">'train_label'</span>:<span class="string">'train-labels-idx1-ubyte.gz'</span>,</span><br><span class="line">    <span class="string">'test_img'</span>:<span class="string">'t10k-images-idx3-ubyte.gz'</span>,</span><br><span class="line">    <span class="string">'test_label'</span>:<span class="string">'t10k-labels-idx1-ubyte.gz'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dataset_dir = os.path.dirname(os.path.abspath(__file__))<span class="comment">#os.path.abspath(__file__)表示当前py文件的绝对路径，os.path.dirname表示其所在的文件夹</span></span><br><span class="line">save_file = dataset_dir + <span class="string">"/mnist.pkl"</span></span><br><span class="line"></span><br><span class="line">train_num = <span class="number">60000</span></span><br><span class="line">test_num = <span class="number">10000</span></span><br><span class="line">img_dim = (<span class="number">1</span>, <span class="number">28</span>, <span class="number">28</span>)</span><br><span class="line">img_size = <span class="number">784</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#下载压缩文件</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_download</span><span class="params">(file_name)</span>:</span> <span class="comment">#参数是压缩文件名</span></span><br><span class="line">    file_path = dataset_dir + <span class="string">"/"</span> + file_name <span class="comment">#文件的绝对路径</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> os.path.exists(file_path): <span class="comment">#如果该压缩文件已经存在则退出</span></span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    print(<span class="string">"Downloading "</span> + file_name + <span class="string">" ... "</span>)</span><br><span class="line">    urllib.request.urlretrieve(url_base + file_name, file_path) <span class="comment">#下载远程文件到本地指定地址和文件名</span></span><br><span class="line">    print(<span class="string">"Done"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#下载数据   </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">download_mnist</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> v <span class="keyword">in</span> key_file.values(): <span class="comment">#迭代出压缩文件名</span></span><br><span class="line">       _download(v) <span class="comment">#下载压缩文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#将标签压缩文件转化为数组（一维，uint8）</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_load_label</span><span class="params">(file_name)</span>:</span></span><br><span class="line">    file_path = dataset_dir + <span class="string">"/"</span> + file_name</span><br><span class="line">    </span><br><span class="line">    print(<span class="string">"Converting "</span> + file_name + <span class="string">" to NumPy Array ..."</span>)</span><br><span class="line">    <span class="keyword">with</span> gzip.open(file_path, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            labels = np.frombuffer(f.read(), np.uint8, offset=<span class="number">8</span>) <span class="comment">#注意这里offset=8，生成一维数组(label的个数, )</span></span><br><span class="line">    print(<span class="string">"Done"</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> labels</span><br><span class="line"></span><br><span class="line"><span class="comment">#将图片压缩文件转化为数组（二维，uint8）</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_load_img</span><span class="params">(file_name)</span>:</span></span><br><span class="line">    file_path = dataset_dir + <span class="string">"/"</span> + file_name <span class="comment">#压缩文件的绝对路径</span></span><br><span class="line">    </span><br><span class="line">    print(<span class="string">"Converting "</span> + file_name + <span class="string">" to NumPy Array ..."</span>)    </span><br><span class="line">    <span class="keyword">with</span> gzip.open(file_path, <span class="string">'rb'</span>) <span class="keyword">as</span> f: <span class="comment">#gzip模块用于压缩和解压缩文件</span></span><br><span class="line">            data = np.frombuffer(f.read(), np.uint8, offset=<span class="number">16</span>) <span class="comment">#frombuffer把提供的数据流转化为对应dtype类型，从offset位置开始读取的一维数组。offset为什么要设置为16呢？</span></span><br><span class="line">    data = data.reshape(<span class="number">-1</span>, img_size) <span class="comment">#-1表示根据系统设定，只要第一维是img_size。转化后0维为图片个数，1维为图片的像素值. (-1, 784)</span></span><br><span class="line">    print(<span class="string">"Done"</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"><span class="comment">#转化成数组，文件类型和ta对应的数组组成的字典</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_convert_numpy</span><span class="params">()</span>:</span></span><br><span class="line">    dataset = &#123;&#125;</span><br><span class="line">    dataset[<span class="string">'train_img'</span>] =  _load_img(key_file[<span class="string">'train_img'</span>])</span><br><span class="line">    dataset[<span class="string">'train_label'</span>] = _load_label(key_file[<span class="string">'train_label'</span>])    </span><br><span class="line">    dataset[<span class="string">'test_img'</span>] = _load_img(key_file[<span class="string">'test_img'</span>])</span><br><span class="line">    dataset[<span class="string">'test_label'</span>] = _load_label(key_file[<span class="string">'test_label'</span>])</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dataset</span><br><span class="line"></span><br><span class="line"><span class="comment">#初始化数据,把文件下载到本地并读出里面的数据信息并保存在文件里</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">init_mnist</span><span class="params">()</span>:</span></span><br><span class="line">    download_mnist() <span class="comment">#下载数据，从网上地址直接下载压缩文件到本地</span></span><br><span class="line">    dataset = _convert_numpy() <span class="comment">#文件类型和ta对应的数组组成的字典</span></span><br><span class="line">    print(<span class="string">"Creating pickle file ..."</span>) <span class="comment">#把字典数据保存在文件mnist.pkl里面</span></span><br><span class="line">    <span class="keyword">with</span> open(save_file, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        pickle.dump(dataset, f, <span class="number">-1</span>)</span><br><span class="line">    print(<span class="string">"Done!"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#把标签保存为仅正确解标签为1， 其余为0的数组。参数X为训练或者测试标签的一维数组</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_change_one_hot_label</span><span class="params">(X)</span>:</span></span><br><span class="line">    T = np.zeros((X.size, <span class="number">10</span>)) <span class="comment">#生成一个二维数组，X的每个元素为一行10个0的数组,及X的第0个元素对应T的第0行数组（10个0组成），以此类推</span></span><br><span class="line">    <span class="keyword">for</span> idx, row <span class="keyword">in</span> enumerate(T):<span class="comment">#遍历数组，</span></span><br><span class="line">        row[X[idx]] = <span class="number">1</span> <span class="comment">#X标签（一维数组）的第0个元素对应的值设为n，T第0行数组的第n个元素设置为1，以此类推。也就是说X标签是什么值，ta对应的那行数组（T里面的对应行）的标签（序列号）就为1 </span></span><br><span class="line">    <span class="keyword">return</span> T</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_mnist</span><span class="params">(normalize=True, flatten=True, one_hot_label=False)</span>:</span></span><br><span class="line">    <span class="string">"""读入MNIST数据集</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Parameters</span></span><br><span class="line"><span class="string">    ----------</span></span><br><span class="line"><span class="string">    normalize : 将图像的像素值正规化为0.0~1.0</span></span><br><span class="line"><span class="string">    one_hot_label : </span></span><br><span class="line"><span class="string">        one_hot_label为True的情况下，标签作为one-hot数组返回</span></span><br><span class="line"><span class="string">        one-hot数组是指[0,0,1,0,0,0,0,0,0,0]这样的数组</span></span><br><span class="line"><span class="string">    flatten : 是否将图像展开为一维数组</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    Returns</span></span><br><span class="line"><span class="string">    -------</span></span><br><span class="line"><span class="string">    (训练图像, 训练标签), (测试图像, 测试标签)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(save_file): <span class="comment">#如果不存在save_file文件夹</span></span><br><span class="line">        init_mnist() <span class="comment">#则初始化数据</span></span><br><span class="line">        </span><br><span class="line">    <span class="keyword">with</span> open(save_file, <span class="string">'rb'</span>) <span class="keyword">as</span> f:<span class="comment">#导出pickle文件的数据，数据是文件类型和其对应的数组组成的字典</span></span><br><span class="line">        dataset = pickle.load(f)</span><br><span class="line"></span><br><span class="line"><span class="comment">#使图片数据正规化</span></span><br><span class="line">    <span class="keyword">if</span> normalize: <span class="comment">#如果这个参数为True, 那么把图片（二维，uint8）数据转化为float32, 并除以255,使其图片数据正规化为0.0-1.0的值</span></span><br><span class="line">        <span class="keyword">for</span> key <span class="keyword">in</span> (<span class="string">'train_img'</span>, <span class="string">'test_img'</span>):</span><br><span class="line">            dataset[key] = dataset[key].astype(np.float32)</span><br><span class="line">            dataset[key] /= <span class="number">255.0</span></span><br><span class="line">            </span><br><span class="line">    <span class="keyword">if</span> one_hot_label:<span class="comment">#把标签转化为one-hot数组</span></span><br><span class="line">        dataset[<span class="string">'train_label'</span>] = _change_one_hot_label(dataset[<span class="string">'train_label'</span>])</span><br><span class="line">        dataset[<span class="string">'test_label'</span>] = _change_one_hot_label(dataset[<span class="string">'test_label'</span>])</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> flatten: <span class="comment">#如果flatten为False，图片数据则不转为(-1, 1, 28, 28)，为True则数据结构不变为(-1, 784)</span></span><br><span class="line">         <span class="keyword">for</span> key <span class="keyword">in</span> (<span class="string">'train_img'</span>, <span class="string">'test_img'</span>):</span><br><span class="line">            dataset[key] = dataset[key].reshape(<span class="number">-1</span>, <span class="number">1</span>, <span class="number">28</span>, <span class="number">28</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (dataset[<span class="string">'train_img'</span>], dataset[<span class="string">'train_label'</span>]), (dataset[<span class="string">'test_img'</span>], dataset[<span class="string">'test_label'</span>]) </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    init_mnist()</span><br></pre></td></tr></table></figure>
+<p>第二个源码：neuralnet_mnist.py 目的是利用训练好的数据，测试判断手写字的准确率</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"><span class="keyword">import</span> sys, os</span><br><span class="line">sys.path.append(os.pardir)  <span class="comment"># 为了导入父目录的文件而进行的设定</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">from</span> dataset.mnist <span class="keyword">import</span> load_mnist</span><br><span class="line"><span class="keyword">from</span> common.functions <span class="keyword">import</span> sigmoid, softmax</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#从load_minist中得到所有训练和测试数据，正则化。这里只需要测试数据</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_data</span><span class="params">()</span>:</span></span><br><span class="line">    (x_train, t_train), (x_test, t_test) = load_mnist(normalize=<span class="keyword">True</span>, flatten=<span class="keyword">True</span>, one_hot_label=<span class="keyword">False</span>)</span><br><span class="line">    <span class="keyword">return</span> x_test, t_test</span><br><span class="line"></span><br><span class="line"><span class="comment">#从保存的训练数据中，导出每层的权重的偏置数据。一个字典变量</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">init_network</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">"sample_weight.pkl"</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        network = pickle.load(f)</span><br><span class="line">    <span class="keyword">return</span> network</span><br><span class="line"></span><br><span class="line"><span class="comment">#从字典变量中导出对应键的值，并进行数据计算，最后得到x的概率值y</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(network, x)</span>:</span></span><br><span class="line">    W1, W2, W3 = network[<span class="string">'W1'</span>], network[<span class="string">'W2'</span>], network[<span class="string">'W3'</span>]</span><br><span class="line">    b1, b2, b3 = network[<span class="string">'b1'</span>], network[<span class="string">'b2'</span>], network[<span class="string">'b3'</span>]</span><br><span class="line"></span><br><span class="line">    a1 = np.dot(x, W1) + b1</span><br><span class="line">    z1 = sigmoid(a1)</span><br><span class="line">    a2 = np.dot(z1, W2) + b2</span><br><span class="line">    z2 = sigmoid(a2)</span><br><span class="line">    a3 = np.dot(z2, W3) + b3</span><br><span class="line">    y = softmax(a3)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> y</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">x, t = get_data() <span class="comment">#正则化的测试数据。标签是一维数据(标签个数10000, )，图片是二维数据(图片个数10000, 像素值784)</span></span><br><span class="line">network = init_network() <span class="comment">#从训练数据中得到一个字典变量</span></span><br><span class="line">accuracy_cnt = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(x)): <span class="comment">#len(x)=10000</span></span><br><span class="line">    y = predict(network, x[i]) <span class="comment">#x[i]就是导出每张图片的像素数据，最终得到每个图片的概率值y</span></span><br><span class="line">    p= np.argmax(y) <span class="comment"># 从10个神经元中获取概率最高的元素的索引，就是该测试结果的值</span></span><br><span class="line">    <span class="keyword">if</span> p == t[i]: <span class="comment">#t[i]是这个测试图片正确值，如果测试结果是正确的，那么就算测试正确一次</span></span><br><span class="line">        accuracy_cnt += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">"Accuracy:"</span> + str(float(accuracy_cnt) / len(x))) <span class="comment">#计算正确率</span></span><br></pre></td></tr></table></figure>
+<p>第三个源码：neuralnet_mnist_batch.py 目的是对数据进行批量处理</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"><span class="keyword">import</span> sys, os</span><br><span class="line">sys.path.append(os.pardir)  <span class="comment"># 为了导入父目录的文件而进行的设定</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line"><span class="keyword">from</span> dataset.mnist <span class="keyword">import</span> load_mnist</span><br><span class="line"><span class="keyword">from</span> common.functions <span class="keyword">import</span> sigmoid, softmax</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_data</span><span class="params">()</span>:</span></span><br><span class="line">    (x_train, t_train), (x_test, t_test) = load_mnist(normalize=<span class="keyword">True</span>, flatten=<span class="keyword">True</span>, one_hot_label=<span class="keyword">False</span>)</span><br><span class="line">    <span class="keyword">return</span> x_test, t_test</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">init_network</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">"sample_weight.pkl"</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        network = pickle.load(f)</span><br><span class="line">    <span class="keyword">return</span> network</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(network, x)</span>:</span></span><br><span class="line">    w1, w2, w3 = network[<span class="string">'W1'</span>], network[<span class="string">'W2'</span>], network[<span class="string">'W3'</span>]</span><br><span class="line">    b1, b2, b3 = network[<span class="string">'b1'</span>], network[<span class="string">'b2'</span>], network[<span class="string">'b3'</span>]</span><br><span class="line"></span><br><span class="line">    a1 = np.dot(x, w1) + b1</span><br><span class="line">    z1 = sigmoid(a1)</span><br><span class="line">    a2 = np.dot(z1, w2) + b2</span><br><span class="line">    z2 = sigmoid(a2)</span><br><span class="line">    a3 = np.dot(z2, w3) + b3</span><br><span class="line">    y = softmax(a3)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> y</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">x, t = get_data()</span><br><span class="line">network = init_network()</span><br><span class="line"></span><br><span class="line">batch_size = <span class="number">100</span> <span class="comment"># 批数量</span></span><br><span class="line">accuracy_cnt = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(x), batch_size):</span><br><span class="line">    x_batch = x[i:i+batch_size] <span class="comment">#100个图片为一批，进行批处理shape是(100, 784)</span></span><br><span class="line">    y_batch = predict(network, x_batch) <span class="comment">#每次生成一个二维数组shape是(100, 10)</span></span><br><span class="line">    p = np.argmax(y_batch, axis=<span class="number">1</span>) <span class="comment">#在轴上第一维上最大概率的索引组成一维数组，shape是(100,)</span></span><br><span class="line">    accuracy_cnt += np.sum(p == t[i:i+batch_size]) <span class="comment">#np.sum(bool), 统计True的个数，也就是正确的个数</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">"Accuracy:"</span> + str(float(accuracy_cnt) / len(x)))</span><br></pre></td></tr></table></figure>
+<p>初体验以及遗留的问题：</p>
+<ol>
+<li>如果没有Numpy基础理解这些源代码会比较难。</li>
+<li>识别手写字是个很神奇的事情，也可以通过数组之间的运算来实现。</li>
+<li>问题1：怎么设置frombuffer函数的offset参数，在源码中要设置为16或者8呢？</li>
+<li>问题2：为什么MNIST的神经网络中隐藏层的神经元个数要设置成50和100，而不设置成其他？</li>
+<li>问题3：怎么通过第一层每个神经元的像素值输入就可以判断数字是什么，这是什么原理？</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/deeplearning/" rel="tag"># deeplearning</a>
+          
+            <a href="/tags/MNIST/" rel="tag"># MNIST</a>
+          
+            <a href="/tags/numpy/" rel="tag"># numpy</a>
+          
+            <a href="/tags/deep-learning-from-scratch/" rel="tag"># deep learning from scratch</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/SonicHuang/9a3bb40b/" rel="next" title="Deeplearning 笔记：数组转置 empty_like tile 广播等">
+                <i class="fa fa-chevron-left"></i> Deeplearning 笔记：数组转置 empty_like tile 广播等
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MjYyNy8xOTE3NA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">SonicHuang</p>
+              <p class="site-description motion-element" itemprop="description">Sharing everything I'm learning to program in Python.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">51</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Numpy"><span class="nav-number">1.</span> <span class="nav-text">2.Numpy</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-17-dtype-astype"><span class="nav-number">1.1.</span> <span class="nav-text">2.17 dtype, astype</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-enumerate-Python的内置函数用于将一个可遍历的数据对象-如列表、元组或字符串-组合为一个索引序列，同时列出数据和数据下标，一般用在-for-循环当中。"><span class="nav-number">2.</span> <span class="nav-text">3. enumerate(), Python的内置函数用于将一个可遍历的数据对象(如列表、元组或字符串)组合为一个索引序列，同时列出数据和数据下标，一般用在 for 循环当中。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Deep-Learning-From-Scratch"><span class="nav-number">3.</span> <span class="nav-text">4. Deep Learning From Scratch</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-Mnist数据集初体验"><span class="nav-number">3.1.</span> <span class="nav-text">4.1 Mnist数据集初体验</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SonicHuang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
