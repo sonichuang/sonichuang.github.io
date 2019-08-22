@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="python,爬虫,chardet,urllib,">
+  <meta name="keywords" content="deeplearning,python,梯度,numpy,meshgrid,">
 
 
 
@@ -79,20 +79,21 @@
 
 
 
-<meta name="description" content="上一篇我们安装编码检测工具chardet, 小甲鱼老师有道题要求用户输入任意网址，我们通过脚本判断出该网站使用的编码方式。 题目演示：">
-<meta name="keywords" content="python,爬虫,chardet,urllib">
+<meta name="description" content="2.Numpy2.18 meshgrid函数">
+<meta name="keywords" content="deeplearning,python,梯度,numpy,meshgrid">
 <meta property="og:type" content="article">
-<meta property="og:title" content="爬虫-编码检测应用">
-<meta property="og:url" content="https://sonichuang.github.io/SonicHuang/bd5cd896/index.html">
+<meta property="og:title" content="Deeplearning 笔记：meshgrid函数 梯度">
+<meta property="og:url" content="https://sonichuang.github.io/SonicHuang/8126b86f/index.html">
 <meta property="og:site_name" content="SonicHuang&#39;s Blog">
-<meta property="og:description" content="上一篇我们安装编码检测工具chardet, 小甲鱼老师有道题要求用户输入任意网址，我们通过脚本判断出该网站使用的编码方式。 题目演示：">
+<meta property="og:description" content="2.Numpy2.18 meshgrid函数">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://sonichuang.github.io/assets/10QQ截图20190215183513.png">
-<meta property="og:updated_time" content="2019-02-24T13:56:48.089Z">
+<meta property="og:image" content="https://sonichuang.github.io/assets/v2-a7f1c996c371d1167a0fb7b5273c6d01_hd.jpg">
+<meta property="og:image" content="https://sonichuang.github.io/assets/微信图片_20190822215441.jpg">
+<meta property="og:updated_time" content="2019-08-22T14:47:12.351Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="爬虫-编码检测应用">
-<meta name="twitter:description" content="上一篇我们安装编码检测工具chardet, 小甲鱼老师有道题要求用户输入任意网址，我们通过脚本判断出该网站使用的编码方式。 题目演示：">
-<meta name="twitter:image" content="https://sonichuang.github.io/assets/10QQ截图20190215183513.png">
+<meta name="twitter:title" content="Deeplearning 笔记：meshgrid函数 梯度">
+<meta name="twitter:description" content="2.Numpy2.18 meshgrid函数">
+<meta name="twitter:image" content="https://sonichuang.github.io/assets/v2-a7f1c996c371d1167a0fb7b5273c6d01_hd.jpg">
 
 
 
@@ -122,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="https://sonichuang.github.io/SonicHuang/bd5cd896/">
+  <link rel="canonical" href="https://sonichuang.github.io/SonicHuang/8126b86f/">
 
 
 
 
 
-  <title>爬虫-编码检测应用 | SonicHuang's Blog</title>
+  <title>Deeplearning 笔记：meshgrid函数 梯度 | SonicHuang's Blog</title>
   
 
 
@@ -297,7 +298,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sonichuang.github.io/SonicHuang/bd5cd896/">
+    <link itemprop="mainEntityOfPage" href="https://sonichuang.github.io/SonicHuang/8126b86f/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="SonicHuang">
@@ -314,7 +315,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">爬虫-编码检测应用</h1>
+          <h1 class="post-title" itemprop="name headline">Deeplearning 笔记：meshgrid函数 梯度</h1>
         
 
         <div class="post-meta">
@@ -326,8 +327,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-20T21:23:01+08:00">
-                2019-02-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-22T20:51:51+08:00">
+                2019-08-22
               </time>
             
 
@@ -386,16 +387,22 @@
       
 
       
-        <p>上一篇我们安装编码检测工具chardet, 小甲鱼老师有道题要求用户输入任意网址，我们通过脚本判断出该网站使用的编码方式。</p>
-<p>题目演示：</p>
-<p><img src="/assets/10QQ截图20190215183513.png" alt=""></p>
-<a id="more"></a>
-<h3 id="下面是我的代码："><a href="#下面是我的代码：" class="headerlink" title="下面是我的代码："></a>下面是我的代码：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''本脚本是利用文本编码检测工具chardet检测用户输入的网站所使用的编码。'''</span></span><br><span class="line"><span class="keyword">import</span> urllib.request <span class="keyword">as</span> ur</span><br><span class="line"><span class="keyword">import</span> chardet <span class="keyword">as</span> ch</span><br><span class="line"></span><br><span class="line"><span class="comment">#定义一个函数用于接收网站数据</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">source</span><span class="params">()</span>:</span></span><br><span class="line">    url = input(<span class="string">'Please input the URL you want to detect: '</span>)</span><br><span class="line">    <span class="keyword">try</span>:<span class="comment">#检测用户输入的网址是否正确</span></span><br><span class="line">        content = ur.urlopen(url).read()</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        print(<span class="string">'The URL is wrong or it\'s not available.'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> content</span><br><span class="line"></span><br><span class="line"><span class="comment">#检测网站的编码</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">detect</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:<span class="comment">#如果用户输入的网址有问题这里就会抛出异常，为了使脚本运行正常，这里进行了处理，并提示用户。</span></span><br><span class="line">        sources = source()</span><br><span class="line">        result = ch.detect(sources)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        print(<span class="string">'You should restart the application again.'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        result = result[<span class="string">'encoding'</span>]</span><br><span class="line">        <span class="keyword">if</span> result == <span class="string">'GB2312'</span>:</span><br><span class="line">            result = <span class="string">'GBK'</span></span><br><span class="line">        print(<span class="string">'The encoding way is %s.'</span> % result)</span><br><span class="line"></span><br><span class="line"><span class="comment">#如果作为单独脚本运行时</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    detect()</span><br></pre></td></tr></table></figure>
-<p>参考<a href="https://www.zhihu.com/question/19677619" target="_blank" rel="noopener">关于GB2312 和 GBK</a></p>
-<p>总结：</p>
-<p>要注意</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__name__ == <span class="string">'__main__'</span>:</span><br></pre></td></tr></table></figure>
-<p>的使用</p>
+        <h3 id="2-Numpy"><a href="#2-Numpy" class="headerlink" title="2.Numpy"></a>2.Numpy</h3><h4 id="2-18-meshgrid函数"><a href="#2-18-meshgrid函数" class="headerlink" title="2.18 meshgrid函数"></a>2.18 meshgrid函数</h4><a id="more"></a>
+<p>参考文章<a href="https://zhuanlan.zhihu.com/p/29663486" target="_blank" rel="noopener">Numpy中Meshgrid函数介绍及2种应用场景</a></p>
+<p>[xv,yv] = meshgrid(x,y) 将向量x和y定义的区域转换成矩阵xv和yv,其中矩阵xv的行向量是向量x的简单复制，而矩阵yv的列向量是向量y的简单复制(注：下面代码中xv和yv均是数组，在文中统一称为矩阵了)。假设x是长度为m的向量，y是长度为n的向量，则最终生成的矩阵xv和yv的维度都是 nm （注意不是mn）。</p>
+<p><img src="/assets/v2-a7f1c996c371d1167a0fb7b5273c6d01_hd.jpg" alt=""></p>
+<p>参考上图再看下面的代码，x, y为一维数组</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>x = np.arange(<span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x</span><br><span class="line">array([<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y = np.arange(<span class="number">2</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y</span><br><span class="line">array([<span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>xv, yv = np.meshgrid(x, y)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>xv <span class="comment">#x保持横轴数据不变，在纵轴上复制的次数为y的数据个数，本例中为复制2次</span></span><br><span class="line">array([[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>], <span class="comment">#最终得到的数组shape都为(2, 3)</span></span><br><span class="line">       [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>]])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>yv <span class="comment">#如下保持数据在纵轴上的不变，复制的次数为x的数据个数，本例为复制3次</span></span><br><span class="line">array([[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">       [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>]])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>z = [i <span class="keyword">for</span> i <span class="keyword">in</span> zip(xv.flat,yv.flat)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>z</span><br><span class="line">[(<span class="number">0</span>, <span class="number">0</span>), (<span class="number">1</span>, <span class="number">0</span>), (<span class="number">2</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">1</span>), (<span class="number">1</span>, <span class="number">1</span>), (<span class="number">2</span>, <span class="number">1</span>)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x.shape</span><br><span class="line">(<span class="number">3</span>,)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y.shape</span><br><span class="line">(<span class="number">2</span>,)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>xv.shape</span><br><span class="line">(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>yv.shape</span><br><span class="line">(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="4-Deep-Learning-From-Scratch"><a href="#4-Deep-Learning-From-Scratch" class="headerlink" title="4. Deep Learning From Scratch"></a>4. Deep Learning From Scratch</h3><h4 id="4-2-函数求导"><a href="#4-2-函数求导" class="headerlink" title="4.2 函数求导"></a>4.2 函数求导</h4><p>教材中求f(x)=0.01<em>x**2 + 0.1</em>x，当x=5时的导数，以及它的切线函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pylab <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment">#求f(x)的导数，f为函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">numerical_diff</span><span class="params">(f, x)</span>:</span></span><br><span class="line">    h = <span class="number">1e-4</span> <span class="comment"># 0.0001</span></span><br><span class="line">    <span class="keyword">return</span> (f(x+h) - f(x-h)) / (<span class="number">2</span>*h)</span><br><span class="line"></span><br><span class="line"><span class="comment">#要求导数的函数f(x)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">function_1</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0.01</span>*x**<span class="number">2</span> + <span class="number">0.1</span>*x </span><br><span class="line"></span><br><span class="line"><span class="comment">#求x在f(x)上的导数，以及对应的切线函数.下面的推导过程参考下面的图片</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tangent_line</span><span class="params">(f, x)</span>:</span></span><br><span class="line">    d = numerical_diff(f, x)</span><br><span class="line">    print(d)</span><br><span class="line">    y = f(x) - d*x <span class="comment">#y为切线函数与纵轴的交点。我不是非常理解为什么是f(x)-d*x而不是后者减去前者，这个正负问题。</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> t: d*t + y</span><br><span class="line">     </span><br><span class="line">x = np.arange(<span class="number">0.0</span>, <span class="number">20.0</span>, <span class="number">0.1</span>)</span><br><span class="line">y = function_1(x)</span><br><span class="line">plt.xlabel(<span class="string">"x"</span>)</span><br><span class="line">plt.ylabel(<span class="string">"f(x)"</span>)</span><br><span class="line"></span><br><span class="line">tf = tangent_line(function_1, <span class="number">5</span>)</span><br><span class="line">y2 = tf(x)</span><br><span class="line"></span><br><span class="line">plt.plot(x, y)</span><br><span class="line">plt.plot(x, y2)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>推导过程：</p>
+<p><img src="/assets/微信图片_20190822215441.jpg" alt=""></p>
+<h3 id="4-3-梯度"><a href="#4-3-梯度" class="headerlink" title="4.3 梯度"></a>4.3 梯度</h3><p>这段代码，我主要分析了梯度的计算过程，而没有分析它绘图的过程</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"><span class="comment"># cf.http://d.hatena.ne.jp/white_wheels/20100327/p3</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pylab <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br><span class="line"></span><br><span class="line"><span class="comment">#求一维数组在函数中的导数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_numerical_gradient_no_batch</span><span class="params">(f, x)</span>:</span></span><br><span class="line">    h = <span class="number">1e-4</span> <span class="comment"># 0.0001</span></span><br><span class="line">    grad = np.zeros_like(x) <span class="comment">#生成一个同x形状，元素全为0的数组，grad同x在这里是一维数组</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> idx <span class="keyword">in</span> range(x.size): </span><br><span class="line">        tmp_val = x[idx] <span class="comment">#导出一维数组中每个元素并赋值给tmp_val</span></span><br><span class="line">        x[idx] = float(tmp_val) + h <span class="comment">#然后再在这个元素上加上一个微小数，并修改x数组的对应元素</span></span><br><span class="line">        fxh1 = f(x) <span class="comment"># f(x+h) #把x数组代入f(x)函数中得到一个值</span></span><br><span class="line">        </span><br><span class="line">        x[idx] = tmp_val - h <span class="comment">#同理求出同一元素减去微小数后数组的代入函数后得到的值</span></span><br><span class="line">        fxh2 = f(x) <span class="comment"># f(x-h)</span></span><br><span class="line">        grad[idx] = (fxh1 - fxh2) / (<span class="number">2</span>*h) <span class="comment">#得到一个导数，再导入grad同一位置。</span></span><br><span class="line">        </span><br><span class="line">        x[idx] = tmp_val <span class="comment"># 还原值 #将x还原</span></span><br><span class="line">        </span><br><span class="line">    <span class="keyword">return</span> grad <span class="comment">#这样得到每个元素对应的导数组成的一维数组</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#2维数组在函数f的求导</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">numerical_gradient</span><span class="params">(f, X)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> X.ndim == <span class="number">1</span>: <span class="comment">#如果参数X是一维数组</span></span><br><span class="line">        <span class="keyword">return</span> _numerical_gradient_no_batch(f, X) <span class="comment">#求一维数组的导数</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        grad = np.zeros_like(X) <span class="comment">#如果是2维数组，则grad生成对应的元素为0的2维数组</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> idx, x <span class="keyword">in</span> enumerate(X): <span class="comment">#idx为列的下标，x为idx列下标下每一行的数组为一维数组</span></span><br><span class="line">            grad[idx] = _numerical_gradient_no_batch(f, x) <span class="comment">#每一行的数组生成对应的导数组成的一维数组，再导入grad对应下标列的每行</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> grad <span class="comment">#最终得到一个完整的2维数组</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">function_2</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> x.ndim == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> np.sum(x**<span class="number">2</span>)</span><br><span class="line">    <span class="keyword">else</span>: <span class="comment">#2维数组中求横轴方向的数组平方和</span></span><br><span class="line">        <span class="keyword">return</span> np.sum(x**<span class="number">2</span>, axis=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#求x在函数中的导数和对应的切线函数，在这段代码中似乎没有用上</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tangent_line</span><span class="params">(f, x)</span>:</span></span><br><span class="line">    d = numerical_gradient(f, x)</span><br><span class="line">    print(d)</span><br><span class="line">    y = f(x) - d*x</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> t: d*t + y</span><br><span class="line">     </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    x0 = np.arange(<span class="number">-2</span>, <span class="number">2.5</span>, <span class="number">0.25</span>)</span><br><span class="line">    x1 = np.arange(<span class="number">-2</span>, <span class="number">2.5</span>, <span class="number">0.25</span>)</span><br><span class="line">    X, Y = np.meshgrid(x0, x1) <span class="comment">#参考文章前面meshgrid函数，x0, y0均为一维数组，shape均为(18, ),所以X, Yshape均为(18, 18)二维数组</span></span><br><span class="line">    </span><br><span class="line">    X = X.flatten() <span class="comment">#把X, Y分别改写为一维数组</span></span><br><span class="line">    Y = Y.flatten()</span><br><span class="line">    </span><br><span class="line">    grad = numerical_gradient(function_2, np.array([X, Y]) ) <span class="comment">#这里np.array([X, Y])是二维数组</span></span><br><span class="line">    </span><br><span class="line">    plt.figure()</span><br><span class="line">    plt.quiver(X, Y, -grad[<span class="number">0</span>], -grad[<span class="number">1</span>],  angles=<span class="string">"xy"</span>,color=<span class="string">"#666666"</span>)<span class="comment">#,headwidth=10,scale=40,color="#444444")</span></span><br><span class="line">    plt.xlim([<span class="number">-2</span>, <span class="number">2</span>])</span><br><span class="line">    plt.ylim([<span class="number">-2</span>, <span class="number">2</span>])</span><br><span class="line">    plt.xlabel(<span class="string">'x0'</span>)</span><br><span class="line">    plt.ylabel(<span class="string">'x1'</span>)</span><br><span class="line">    plt.grid()</span><br><span class="line">    plt.legend()</span><br><span class="line">    plt.draw()</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
+<p>后记：</p>
+<p>1.最近业余时间带小孩，电脑又罢工了一段时间，学习进度变得很慢。</p>
+<p>2.感觉数学知识越来越多了，越来越复杂了。</p>
+<p>3.还得一步一个脚印向前走。</p>
 
       
     </div>
@@ -413,13 +420,15 @@
       
         <div class="post-tags">
           
+            <a href="/tags/deeplearning/" rel="tag"># deeplearning</a>
+          
             <a href="/tags/python/" rel="tag"># python</a>
           
-            <a href="/tags/爬虫/" rel="tag"># 爬虫</a>
+            <a href="/tags/梯度/" rel="tag"># 梯度</a>
           
-            <a href="/tags/chardet/" rel="tag"># chardet</a>
+            <a href="/tags/numpy/" rel="tag"># numpy</a>
           
-            <a href="/tags/urllib/" rel="tag"># urllib</a>
+            <a href="/tags/meshgrid/" rel="tag"># meshgrid</a>
           
         </div>
       
@@ -432,8 +441,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/SonicHuang/b9b1e485/" rel="next" title="Python中安装编码检测工具chardet">
-                <i class="fa fa-chevron-left"></i> Python中安装编码检测工具chardet
+              <a href="/SonicHuang/3224e5c7/" rel="next" title="Deeplearning 笔记：MNIST数据集初体验">
+                <i class="fa fa-chevron-left"></i> Deeplearning 笔记：MNIST数据集初体验
               </a>
             
           </div>
@@ -441,10 +450,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/SonicHuang/183747d7/" rel="prev" title="爬虫-访问网站数据并保存在对应文件">
-                爬虫-访问网站数据并保存在对应文件 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -581,7 +586,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#下面是我的代码："><span class="nav-number">1.</span> <span class="nav-text">下面是我的代码：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Numpy"><span class="nav-number">1.</span> <span class="nav-text">2.Numpy</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-18-meshgrid函数"><span class="nav-number">1.1.</span> <span class="nav-text">2.18 meshgrid函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Deep-Learning-From-Scratch"><span class="nav-number">2.</span> <span class="nav-text">4. Deep Learning From Scratch</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-函数求导"><span class="nav-number">2.1.</span> <span class="nav-text">4.2 函数求导</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-梯度"><span class="nav-number">3.</span> <span class="nav-text">4.3 梯度</span></a></li></ol></div>
             
 
           </div>
