@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Python,sonichuang,��������">
+  <meta name="keywords" content="deeplearning,python,梯度,numpy,">
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="Sharing everything I&apos;m learning to program in Python.">
-<meta name="keywords" content="Python,sonichuang,��������">
-<meta property="og:type" content="website">
-<meta property="og:title" content="SonicHuang&#39;s Blog">
-<meta property="og:url" content="https://sonichuang.github.io/tags/os-path/index.html">
+<meta name="description" content="4. Deep Learning From Scratch4.4 梯度法">
+<meta name="keywords" content="deeplearning,python,梯度,numpy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deeplearning 笔记：梯度法">
+<meta property="og:url" content="https://sonichuang.github.io/SonicHuang/1195dc17/index.html">
 <meta property="og:site_name" content="SonicHuang&#39;s Blog">
-<meta property="og:description" content="Sharing everything I&apos;m learning to program in Python.">
+<meta property="og:description" content="4. Deep Learning From Scratch4.4 梯度法">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-09-06T13:15:19.561Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SonicHuang&#39;s Blog">
-<meta name="twitter:description" content="Sharing everything I&apos;m learning to program in Python.">
+<meta name="twitter:title" content="Deeplearning 笔记：梯度法">
+<meta name="twitter:description" content="4. Deep Learning From Scratch4.4 梯度法">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://sonichuang.github.io/tags/os-path/">
+  <link rel="canonical" href="https://sonichuang.github.io/SonicHuang/1195dc17/">
 
 
 
 
 
-  <title>Tag: os.path | SonicHuang's Blog</title>
+  <title>Deeplearning 笔记：梯度法 | SonicHuang's Blog</title>
   
 
 
@@ -144,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -280,52 +281,180 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>os.path<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sonichuang.github.io/SonicHuang/1195dc17/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SonicHuang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SonicHuang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/SonicHuang/0/" itemprop="url">
-              
-                <span itemprop="name">Deeplearning 笔记：Numpy dot,cumsum,花式索引,布尔屏蔽等</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Deeplearning 笔记：梯度法</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-24T21:35:24+08:00" content="2019-05-24">
-          05-24
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-06T20:45:45+08:00">
+                2019-09-06
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="4-Deep-Learning-From-Scratch"><a href="#4-Deep-Learning-From-Scratch" class="headerlink" title="4. Deep Learning From Scratch"></a>4. Deep Learning From Scratch</h3><h4 id="4-4-梯度法"><a href="#4-4-梯度法" class="headerlink" title="4.4 梯度法"></a>4.4 梯度法</h4><a id="more"></a> 
+<p>通过梯度法求函数最小值时，参数的值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pylab <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> gradient_2d <span class="keyword">import</span> numerical_gradient</span><br><span class="line"></span><br><span class="line"><span class="comment">#计算函数f值最小时，x的值</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradient_descent</span><span class="params">(f, init_x, lr=<span class="number">0.01</span>, step_num=<span class="number">100</span>)</span>:</span></span><br><span class="line">    x = init_x <span class="comment">#初始值</span></span><br><span class="line">    x_history = [] <span class="comment">#定义一个空的列表</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(step_num):</span><br><span class="line">        x_history.append( x.copy() ) <span class="comment">#拷贝x的值后，就不会随着原x的变化而变化</span></span><br><span class="line"></span><br><span class="line">        grad = numerical_gradient(f, x) <span class="comment">#求梯度值(斜率), 得到一个二维数组</span></span><br><span class="line">        x -= lr * grad <span class="comment">#沿梯度变化的方向减少，函数值相应的减少</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> x, np.array(x_history) <span class="comment">#返回最后x的值以及他的变化轨迹</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">function_2</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> x[<span class="number">0</span>]**<span class="number">2</span> + x[<span class="number">1</span>]**<span class="number">2</span></span><br><span class="line"></span><br><span class="line">init_x = np.array([<span class="number">-3.0</span>, <span class="number">4.0</span>])    </span><br><span class="line"></span><br><span class="line">lr = <span class="number">0.1</span></span><br><span class="line">step_num = <span class="number">20</span></span><br><span class="line">x, x_history = gradient_descent(function_2, init_x, lr=lr, step_num=step_num)</span><br><span class="line"></span><br><span class="line">plt.plot( [<span class="number">-5</span>, <span class="number">5</span>], [<span class="number">0</span>,<span class="number">0</span>], <span class="string">'--b'</span>)</span><br><span class="line">plt.plot( [<span class="number">0</span>,<span class="number">0</span>], [<span class="number">-5</span>, <span class="number">5</span>], <span class="string">'--b'</span>)</span><br><span class="line">plt.plot(x_history[:,<span class="number">0</span>], x_history[:,<span class="number">1</span>], <span class="string">'o'</span>)</span><br><span class="line"></span><br><span class="line">plt.xlim(<span class="number">-3.5</span>, <span class="number">3.5</span>)</span><br><span class="line">plt.ylim(<span class="number">-4.5</span>, <span class="number">4.5</span>)</span><br><span class="line">plt.xlabel(<span class="string">"X0"</span>)</span><br><span class="line">plt.ylabel(<span class="string">"X1"</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>后记：</p>
+<p>1.在书中求函数的极小值，但是我觉得这样是不对的，因为<code>gradient_descent</code>返回的值是x和它的历史记录, 而不是f(x)的值。所以应该是f(x)取最小时，x的值。</p>
+<p>2.另外在运行这个代码的时候遇到一个问题，<code>matplotlib</code>的某一个模块找不到了。之前也出现过这样类似的情况，是因为杀毒软件把一些模块给屏蔽掉了，到软件中找的这些模块，把模块返回原来的位置，再添加信任就可以了。但是这次没有在杀毒软件中找到，所以就用pip卸载了<code>matplotlib</code>然后在重装就可以了。</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/deeplearning/" rel="tag"># deeplearning</a>
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/梯度/" rel="tag"># 梯度</a>
+          
+            <a href="/tags/numpy/" rel="tag"># numpy</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/SonicHuang/8126b86f/" rel="next" title="Deeplearning 笔记：meshgrid函数 梯度">
+                <i class="fa fa-chevron-left"></i> Deeplearning 笔记：meshgrid函数 梯度
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -333,6 +462,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MjYyNy8xOTE3NA=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -353,8 +491,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -414,6 +561,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Deep-Learning-From-Scratch"><span class="nav-number">1.</span> <span class="nav-text">4. Deep Learning From Scratch</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4-梯度法"><span class="nav-number">1.1.</span> <span class="nav-text">4.4 梯度法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -547,6 +710,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -575,6 +742,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
